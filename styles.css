@@ -2873,6 +2873,27 @@ section {
   pointer-events: none;
 }
 
+.work-play-overlay.buffering,
+.study-media-overlay.buffering {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  background: rgba(3, 8, 20, 0.45);
+}
+
+.video-buffer-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2.5px solid rgba(93, 230, 255, 0.25);
+  border-top-color: var(--accent-cyan, #5de6ff);
+  border-radius: 50%;
+  animation: videoBufferSpin 0.7s linear infinite;
+  display: block;
+}
+
+@keyframes videoBufferSpin {
+  to { transform: rotate(360deg); }
+}
+
 .work-card-media:hover .work-play-overlay.playing {
   opacity: 0.9;
   pointer-events: auto;

@@ -677,7 +677,7 @@
       title: 'BAR NONE™ — Protein. Beyond The Gym',
       category: 'AI Product Commercial',
       tags: ['ChatGPT', 'Google Flow', 'Canva', 'Google Veo', 'Gemini'],
-      media: '<video src="assets/video/bar-none.mp4" controls autoplay playsinline loop></video>',
+      media: '<video src="assets/video/bar-none.mp4" poster="assets/video/bar-none-poster.png" preload="metadata" controls autoplay playsinline loop></video>',
       desc: 'An end-to-end AI-directed commercial exploring appetite appeal, food textures, and micro-particle scattering. Replaces generic fitness commercial tropes with dark culinary luxury.',
       metrics: [
         { label: 'Platform', val: 'Google Veo + Gemini' },
@@ -690,7 +690,7 @@
       title: 'KARUPPASAMY TEMPLE',
       category: 'AI Cinematic Documentary',
       tags: ['ChatGPT', 'Gemini', 'Claude', 'Google Flow', 'Canva'],
-      media: '<video src="assets/video/karuppasamy-temple.mp4" controls autoplay playsinline loop style="width:100%;border-radius:12px;"></video>',
+      media: '<video src="assets/video/karuppasamy-temple.mp4" poster="assets/images/karuppasamy-temple.png" preload="metadata" controls autoplay playsinline loop style="width:100%;border-radius:12px;"></video>',
       desc: 'A cinematic AI-generated documentary-style video that explores the sacred atmosphere, traditions and cultural essence of ancient South Indian folklore with evocative golden firelight and twilight mountain atmospheres.',
       metrics: [
         { label: 'Genre', val: 'Cultural Heritage Documentary' },
@@ -840,6 +840,56 @@
 
       if (!media || !video) return;
 
+      // Instant pre-buffering on hover/touch before user clicks play
+      media.addEventListener('pointerenter', () => {
+        if (video.paused && video.readyState < 2) {
+          video.load();
+        }
+      }, { once: true });
+
+      function updatePlayIcon(iconName) {
+        const circle = overlay?.querySelector('.work-play-circle, .study-play-circle');
+        if (circle) {
+          circle.innerHTML = `<i data-lucide="${iconName}" class="work-play-icon"></i>`;
+          if (window.lucide) window.lucide.createIcons();
+        }
+      }
+
+      function showBuffering() {
+        overlay?.classList.add('buffering');
+        const circle = overlay?.querySelector('.work-play-circle, .study-play-circle');
+        if (circle) {
+          circle.innerHTML = '<div class="video-buffer-spinner"></div>';
+        }
+      }
+
+      function hideBuffering() {
+        overlay?.classList.remove('buffering');
+      }
+
+      video.addEventListener('waiting', () => {
+        showBuffering();
+      });
+
+      video.addEventListener('playing', () => {
+        hideBuffering();
+        overlay?.classList.add('playing');
+        sound?.classList.add('show');
+        updatePlayIcon('pause');
+      });
+
+      video.addEventListener('pause', () => {
+        hideBuffering();
+        overlay?.classList.remove('playing');
+        updatePlayIcon('play');
+      });
+
+      video.addEventListener('ended', () => {
+        hideBuffering();
+        overlay?.classList.remove('playing');
+        updatePlayIcon('play');
+      });
+
       function toggleVideo(e) {
         if (e.target.closest('.video-sound-pill')) return;
         e.stopPropagation();
@@ -848,36 +898,19 @@
         document.querySelectorAll('.work-card-video, .study-media-video').forEach((v) => {
           if (v !== video && !v.paused) {
             v.pause();
-            const pMedia = v.closest('.work-card-media, .study-media-wrapper');
-            const pOverlay = pMedia?.querySelector('.work-play-overlay, .study-media-overlay');
-            if (pOverlay) {
-              pOverlay.classList.remove('playing');
-              const circle = pOverlay.querySelector('.work-play-circle, .study-play-circle');
-              if (circle) circle.innerHTML = '<div class="work-play-circle"><i data-lucide="play" class="work-play-icon"></i></div>';
-            }
           }
         });
 
         if (video.paused) {
-          video.play().then(() => {
-            overlay?.classList.add('playing');
-            sound?.classList.add('show');
-            const circle = overlay?.querySelector('.work-play-circle, .study-play-circle');
-            if (circle) {
-              circle.innerHTML = '<i data-lucide="pause" class="work-play-icon"></i>';
-              if (window.lucide) window.lucide.createIcons();
-            }
-          }).catch((err) => {
+          showBuffering();
+          video.play().catch((err) => {
             console.log('Video play error:', err);
+            hideBuffering();
+            overlay?.classList.remove('playing');
+            updatePlayIcon('play');
           });
         } else {
           video.pause();
-          overlay?.classList.remove('playing');
-          const circle = overlay?.querySelector('.work-play-circle, .study-play-circle');
-          if (circle) {
-            circle.innerHTML = '<i data-lucide="play" class="work-play-icon"></i>';
-            if (window.lucide) window.lucide.createIcons();
-          }
         }
       }
 
@@ -888,15 +921,6 @@
         video.muted = !video.muted;
         sound.innerHTML = video.muted ? '<i data-lucide="volume-x"></i>' : '<i data-lucide="volume-2"></i>';
         if (window.lucide) window.lucide.createIcons();
-      });
-
-      video.addEventListener('ended', () => {
-        overlay?.classList.remove('playing');
-        const circle = overlay?.querySelector('.work-play-circle, .study-play-circle');
-        if (circle) {
-          circle.innerHTML = '<i data-lucide="play" class="work-play-icon"></i>';
-          if (window.lucide) window.lucide.createIcons();
-        }
       });
     }
 
@@ -1207,15 +1231,9 @@
       `;
 
       // Pause any active card videos
-      document.querySelectorAll('.work-card-video').forEach((v) => {
+      document.querySelectorAll('.work-card-video, .study-media-video').forEach((v) => {
         if (!v.paused) {
           v.pause();
-          const pMedia = v.closest('.work-card-media');
-          const pOverlay = pMedia?.querySelector('.work-play-overlay');
-          if (pOverlay) {
-            pOverlay.classList.remove('playing');
-            pOverlay.innerHTML = '<div class="work-play-circle"><i data-lucide="play" class="work-play-icon"></i></div>';
-          }
         }
       });
 
