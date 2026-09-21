@@ -1,0 +1,2050 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Mohan Raaju — AI Fellow · Creative Technologist</title>
+    <meta name="description" content="Mohan Raaju is an AI Fellow and creative technologist exploring generative AI, visual storytelling and creative technology." />
+    <meta property="og:title" content="Mohan Raaju — AI Fellow · Creative Technologist" />
+    <meta property="og:description" content="Mohan Raaju is an AI Fellow and creative technologist exploring generative AI, visual storytelling and creative technology." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#020711" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23050D1C' stroke='%235DE6FF' stroke-width='2'/><circle cx='16' cy='16' r='6' fill='%235DE6FF'/><circle cx='16' cy='16' r='2' fill='%23FFFFFF'/></svg>" />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- External Libraries: Three.js, Lucide Icons, Canvas-Confetti -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <!-- Background 3D Canvas Layer -->
+    <div id="canvas-container"></div>
+    <div class="ambient-vignette"></div>
+
+    <!-- Top Navigation Pill (Matches AI Studio Screenshot) -->
+    <header class="top-nav-wrapper">
+      <nav class="nav-pill-container">
+        <!-- Brand / Identity -->
+        <a href="#hero" class="nav-brand">
+          <div class="brand-status-dot"></div>
+          <div class="brand-meta">
+            <span class="brand-title">MOHAN RAAJU</span>
+            <span class="brand-role">AI FELLOW · CREATIVE TECHNOLOGIST</span>
+          </div>
+        </a>
+
+        <!-- Center Nav Links -->
+        <div class="nav-menu-links">
+          <a href="#hero" class="nav-item active">Home</a>
+          <a href="#about" class="nav-item">About</a>
+          <a href="#fellowship" class="nav-item">Fellowship Journey</a>
+          <a href="#works" class="nav-item">Work</a>
+          <a href="#spotlight" class="nav-item">Case Studies</a>
+          <a href="#skills" class="nav-item">Skills</a>
+          <a href="#studio" class="nav-item">Studio</a>
+          <a href="#contact" class="nav-item">Contact</a>
+        </div>
+
+        <!-- Right Action Button -->
+        <div class="nav-action-wrap">
+          <a href="#contact" class="connect-pill-btn">
+            <i data-lucide="sparkle" class="sparkle-icon"></i>
+            <span>Let's Connect</span>
+            <i data-lucide="arrow-up-right" class="arrow-icon"></i>
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+      <!-- Hero Section (Exact Replica of AI Studio Applet) -->
+      <section id="hero" class="hero-showcase-section">
+        <div class="hero-split-grid">
+          <!-- Left Column: Typography & Storytelling -->
+          <div class="hero-left-column">
+            <!-- Pill Badge -->
+            <div class="hero-role-pill">
+              <i data-lucide="sparkle" class="role-sparkle"></i>
+              <span>AI FELLOW · CREATIVE TECHNOLOGIST</span>
+            </div>
+
+            <!-- Main Punchy Headline -->
+            <h1 class="hero-main-title">
+              <span class="line-white">Curiosity creates</span>
+              <span class="line-white">ideas.</span>
+              <span class="line-gradient">AI brings <span class="text-cyan">them to</span></span>
+              <span class="line-purple">life.</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="hero-lead-text">
+              I explore generative AI, visual storytelling and creative technology to turn ideas into experiences.
+            </p>
+
+            <!-- CTA Action -->
+            <div class="hero-actions-row">
+              <a href="#works" class="explore-work-btn">
+                <span>Explore My Work</span>
+                <i data-lucide="arrow-right"></i>
+              </a>
+              <button id="terminal-trigger-hero" class="cli-ghost-btn" title="Open Interactive Terminal (`)">
+                <i data-lucide="terminal"></i>
+                <span>CLI Terminal</span>
+              </button>
+            </div>
+
+            <!-- Bottom Sub-tags Strip -->
+            <div class="hero-tags-strip">
+              <span>AI FELLOWSHIP</span>
+              <span class="dot-sep">•</span>
+              <span>GENERATIVE AI</span>
+              <span class="dot-sep">•</span>
+              <span>CREATIVE WORK</span>
+              <span class="dot-sep">•</span>
+              <span>EXPERIMENTS</span>
+            </div>
+          </div>
+
+          <!-- Right Column: The 3D Cybernetic Hand & Holographic Project Cubes -->
+          <div class="hero-right-column">
+            <div class="hologram-stage-card" id="hologram-stage-card">
+              <!-- Background Cybernetic Hand & Cubes Artwork -->
+              <div class="hologram-art-wrap">
+                <video
+                  class="hologram-main-video"
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  preload="auto"
+                  poster="assets/images/hero-hand-cubes.jpg"
+                >
+                  <source src="assets/video/robot-hand-hologram.mp4" type="video/mp4" />
+                  <source src="Robot_hand_rotating_holographic_…_20260912170620.mp4" type="video/mp4" />
+                  <!-- Fallback Image if video is not supported -->
+                  <img
+                    src="assets/images/hero-hand-cubes.jpg"
+                    alt="Mohan Raaju Generative Hologram Artwork"
+                    class="hologram-main-img"
+                  />
+                </video>
+
+                <!-- Interactive Floating Hotspots for the 5 Cubes -->
+                <div class="cube-hotspot hotspot-perfume" data-title="WILD STONE" data-sub="Men's Luxury Fragrance AI Commercial">
+                  <span class="hotspot-ping"></span>
+                  <div class="hotspot-tooltip">
+                    <strong>WILD STONE</strong>
+                    <span>AI Fragrance Diffusion</span>
+                  </div>
+                </div>
+
+                <div class="cube-hotspot hotspot-dessert" data-title="ibaco" data-sub="Artisanal Ice Cream Campaign">
+                  <span class="hotspot-ping"></span>
+                  <div class="hotspot-tooltip">
+                    <strong>ibaco</strong>
+                    <span>Dessert Cinematic Ad</span>
+                  </div>
+                </div>
+
+                <div class="cube-hotspot hotspot-temple" data-title="KARUPPASAMY TEMPLE" data-sub="Architectural Heritage Diffusion">
+                  <span class="hotspot-ping"></span>
+                  <div class="hotspot-tooltip">
+                    <strong>KARUPPASAMY TEMPLE</strong>
+                    <span>Generative Heritage</span>
+                  </div>
+                </div>
+
+                <div class="cube-hotspot hotspot-energy" data-title="CAMPA ENERGY" data-sub="Dynamic Beverage Commercial">
+                  <span class="hotspot-ping"></span>
+                  <div class="hotspot-tooltip">
+                    <strong>CAMPA ENERGY</strong>
+                    <span>High-Speed Beverage Ad</span>
+                  </div>
+                </div>
+
+                <div class="cube-hotspot hotspot-mars" data-title="Next Home Mars?" data-sub="Speculative Sci-Fi Exploration">
+                  <span class="hotspot-ping"></span>
+                  <div class="hotspot-tooltip">
+                    <strong>Next Home Mars?</strong>
+                    <span>Sci-Fi Worldbuilding</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Corner Watermark / Badge -->
+              <div class="stage-footer-badge">
+                <div class="sparkle-symbol">✦</div>
+                <div class="hd-hero-badge">
+                  <span class="badge-dot">●</span>
+                  <span>HD // HERO</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Second Page / About Section (Exact Replica of AI Studio Screenshot) -->
+      <section id="about" class="about-showcase-section">
+        <div class="about-split-grid">
+          <!-- Left Column: Vision, 2x2 Feature Grid, Methodology -->
+          <div class="about-left-column">
+            <!-- Eyebrow Pill Badge (Exact Replica from AI Studio Screenshot) -->
+            <div class="about-eyebrow-pill">
+              <svg class="about-pill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2" />
+                <rect x="9" y="9" width="6" height="6" />
+                <line x1="9" y1="1" x2="9" y2="4" />
+                <line x1="15" y1="1" x2="15" y2="4" />
+                <line x1="9" y1="20" x2="9" y2="23" />
+                <line x1="15" y1="20" x2="15" y2="23" />
+                <line x1="20" y1="9" x2="23" y2="9" />
+                <line x1="20" y1="14" x2="23" y2="14" />
+                <line x1="1" y1="9" x2="4" y2="9" />
+                <line x1="1" y1="14" x2="4" y2="14" />
+              </svg>
+              <span>ABOUT MOHAN RAAJU // AI FELLOW &amp; CREATIVE TECHNOLOGIST</span>
+            </div>
+
+            <!-- Headline -->
+            <h2 class="about-main-title">
+              <span class="about-line-white">I don't just use AI.</span>
+              <span class="about-line-gradient">I explore what it makes</span>
+              <span class="about-line-cyan">possible.</span>
+            </h2>
+
+            <!-- Bio Description with Author Avatar -->
+            <div class="about-bio-wrap">
+              <img src="assets/images/mohan-raaju.png" alt="Mohan Raaju" class="about-bio-avatar" />
+              <p class="about-lead-text">
+                I'm Mohan Raaju, an AI Fellow and creative technologist fascinated by the possibilities of artificial intelligence. I explore generative AI through visual storytelling, creative experiments and real-world problem solving.
+              </p>
+            </div>
+
+            <!-- 2x2 Feature Cards Grid -->
+            <div class="about-features-grid">
+              <!-- Card 1: Creative Storyteller -->
+              <div class="about-feature-card">
+                <div class="feature-icon-box">
+                  <i data-lucide="sparkles"></i>
+                </div>
+                <h3 class="feature-title">Creative Storyteller</h3>
+                <p class="feature-desc">Crafting evocative multi-sensory cinematic narratives.</p>
+              </div>
+
+              <!-- Card 2: AI Explorer -->
+              <div class="about-feature-card">
+                <div class="feature-icon-box">
+                  <i data-lucide="compass"></i>
+                </div>
+                <h3 class="feature-title">AI Explorer</h3>
+                <p class="feature-desc">Pushing the bleeding edge of foundation models and latent space.</p>
+              </div>
+
+              <!-- Card 3: Problem Solver -->
+              <div class="about-feature-card">
+                <div class="feature-icon-box">
+                  <i data-lucide="lightbulb"></i>
+                </div>
+                <h3 class="feature-title">Problem Solver</h3>
+                <p class="feature-desc">Transforming abstract concepts into tangible visual experiences.</p>
+              </div>
+
+              <!-- Card 4: Continuous Learner -->
+              <div class="about-feature-card">
+                <div class="feature-icon-box">
+                  <i data-lucide="repeat"></i>
+                </div>
+                <h3 class="feature-title">Continuous Learner</h3>
+                <p class="feature-desc">Relentlessly testing and iterating with emerging tools daily.</p>
+              </div>
+            </div>
+
+            <!-- Methodology & Process Flow -->
+            <div class="methodology-wrapper">
+              <div class="methodology-header">
+                <i data-lucide="layers" class="methodology-icon"></i>
+                <span>CREATIVE METHODOLOGY &amp; PROCESS</span>
+              </div>
+              <div class="methodology-steps">
+                <div class="methodology-pill">Curiosity</div>
+                <span class="step-arrow">➔</span>
+                <div class="methodology-pill">Explore</div>
+                <span class="step-arrow">➔</span>
+                <div class="methodology-pill">Experiment</div>
+                <span class="step-arrow">➔</span>
+                <div class="methodology-pill">Create</div>
+                <span class="step-arrow">➔</span>
+                <div class="methodology-pill">Refine</div>
+                <span class="step-arrow">➔</span>
+                <div class="methodology-pill">Share</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Radar / Holographic Schematic Card -->
+          <div class="about-right-column">
+            <div class="radar-schematic-card" id="radar-schematic-card">
+              <!-- Top Schematics Header with View Switcher -->
+              <div class="radar-card-header">
+                <span class="schematic-tag">AI FELLOWSHIP // CREATIVE TECHNOLOGIST</span>
+                <div class="about-view-toggle">
+                  <button class="view-toggle-btn active" id="btn-view-portrait" title="Show Portrait Photo">
+                    <i data-lucide="user"></i>
+                    <span>Photo</span>
+                  </button>
+                  <button class="view-toggle-btn" id="btn-view-radar" title="Show Radar Schematic">
+                    <i data-lucide="compass"></i>
+                    <span>Radar</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Central Portrait Display (Default View) -->
+              <div class="about-portrait-stage" id="about-portrait-stage">
+                <div class="about-portrait-frame">
+                  <img
+                    src="assets/images/mohan-raaju.png"
+                    alt="Mohan Raaju — AI Fellow · Creative Technologist"
+                    class="about-portrait-photo"
+                  />
+                  <!-- Cyber HUD Overlays & Scanner Line -->
+                  <div class="portrait-hud-corner corner-tl"></div>
+                  <div class="portrait-hud-corner corner-tr"></div>
+                  <div class="portrait-hud-corner corner-bl"></div>
+                  <div class="portrait-hud-corner corner-br"></div>
+                  <div class="portrait-scan-line"></div>
+                  <div class="portrait-status-badge">
+                    <span class="pulse-green-dot"></span>
+                    <span>ONLINE // CREATIVE INTEL</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Central Circular Radar Canvas & SVG Display (Alternative View) -->
+              <div class="radar-visual-stage" id="about-radar-stage" style="display: none;">
+                <svg class="radar-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Grid Crosshairs -->
+                  <line x1="200" y1="20" x2="200" y2="380" stroke="rgba(93, 230, 255, 0.18)" stroke-width="1" stroke-dasharray="4 4" />
+                  <line x1="20" y1="200" x2="380" y2="200" stroke="rgba(93, 230, 255, 0.18)" stroke-width="1" stroke-dasharray="4 4" />
+                  <line x1="60" y1="60" x2="340" y2="340" stroke="rgba(93, 230, 255, 0.08)" stroke-width="1" stroke-dasharray="2 4" />
+                  <line x1="340" y1="60" x2="60" y2="340" stroke="rgba(93, 230, 255, 0.08)" stroke-width="1" stroke-dasharray="2 4" />
+
+                  <!-- Concentric Circles -->
+                  <circle cx="200" cy="200" r="160" fill="none" stroke="rgba(93, 230, 255, 0.12)" stroke-width="1" />
+                  <circle cx="200" cy="200" r="120" fill="none" stroke="rgba(93, 230, 255, 0.2)" stroke-width="1" stroke-dasharray="6 6" />
+                  <circle cx="200" cy="200" r="75" fill="none" stroke="rgba(93, 230, 255, 0.35)" stroke-width="1.5" />
+                  <circle cx="200" cy="200" r="30" fill="rgba(93, 230, 255, 0.1)" stroke="rgba(93, 230, 255, 0.6)" stroke-width="2" />
+
+                  <!-- Center Nucleus Glow -->
+                  <circle cx="200" cy="200" r="12" fill="#5de6ff" filter="url(#glow-filter)" />
+                  <circle cx="200" cy="200" r="5" fill="#ffffff" />
+
+                  <!-- Rotating Radar Sweep Line & Beam -->
+                  <g class="radar-sweep-anim">
+                    <line x1="200" y1="200" x2="360" y2="200" stroke="url(#sweep-grad)" stroke-width="2.5" />
+                    <path d="M 200 200 L 360 200 A 160 160 0 0 0 340 125 Z" fill="url(#sweep-sector-grad)" opacity="0.45" />
+                  </g>
+
+                  <!-- Satellite Nodes -->
+                  <circle cx="290" cy="110" r="4.5" fill="#5de6ff" class="radar-node-pulse" />
+                  <circle cx="100" cy="160" r="4" fill="#5de6ff" class="radar-node-pulse" />
+                  <circle cx="280" cy="300" r="4" fill="#5de6ff" class="radar-node-pulse" />
+                  <circle cx="130" cy="280" r="4.5" fill="#5de6ff" class="radar-node-pulse" />
+
+                  <!-- Definitions for Gradients and Filters -->
+                  <defs>
+                    <filter id="glow-filter" x="-50%" y="-50%" width="200%" height="200%">
+                      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+                      <feMerge>
+                        <feMergeNode in="coloredBlur"/>
+                        <feMergeNode in="SourceGraphic"/>
+                      </feMerge>
+                    </filter>
+                    <linearGradient id="sweep-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="rgba(93, 230, 255, 0)" />
+                      <stop offset="100%" stop-color="#5de6ff" />
+                    </linearGradient>
+                    <linearGradient id="sweep-sector-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="rgba(93, 230, 255, 0)" />
+                      <stop offset="100%" stop-color="rgba(93, 230, 255, 0.35)" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+
+              <!-- Radar Identification & Title -->
+              <div class="radar-identity-row">
+                <h3 class="radar-identity-name">MOHAN RAAJU</h3>
+                <span class="radar-identity-sub">AI FELLOW · CREATIVE TECHNOLOGIST</span>
+              </div>
+
+              <!-- Core Philosophy Box -->
+              <div class="radar-philosophy-box">
+                <span class="philosophy-tag">CORE PHILOSOPHY</span>
+                <p class="philosophy-quote">“Same Curiosity, Bigger Possibilities”</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fellowship Journey Section (Exact Replica of AI Studio Screenshots) -->
+      <section id="fellowship" class="fellowship-showcase-section">
+        <!-- Section Header Container -->
+        <div class="fellowship-header-container">
+          <!-- Top Badge Pill -->
+          <div class="fellowship-badge-pill">
+            <i data-lucide="bookmark" class="badge-icon"></i>
+            <span>FELLOWSHIP JOURNEY</span>
+          </div>
+
+          <!-- Main Title -->
+          <h2 class="fellowship-main-title">AI Fellowship Journey</h2>
+
+          <!-- Date Tag -->
+          <div class="fellowship-date-tag">
+            <i data-lucide="calendar" class="calendar-icon"></i>
+            <span>July 2026 – Present</span>
+          </div>
+
+          <!-- Gradient Tagline -->
+          <h3 class="fellowship-gradient-tagline">
+            Learning. Experimenting. Creating.
+          </h3>
+
+          <!-- Description -->
+          <p class="fellowship-lead-desc">
+            Exploring Generative AI, visual storytelling and creative technology through hands-on experimentation, daily testing, and boundary-pushing research.
+          </p>
+        </div>
+
+        <!-- Central Alternating Timeline -->
+        <div class="fellowship-timeline-wrapper">
+          <!-- Central Glowing Timeline Spine -->
+          <div class="timeline-spine"></div>
+
+          <!-- Milestone 1: JUL 2026 (Right side) -->
+          <div class="timeline-entry entry-right">
+            <!-- Central Node Marker on Spine -->
+            <div class="timeline-node-marker node-start">
+              <div class="node-ring"></div>
+              <div class="node-core"></div>
+            </div>
+
+            <!-- Milestone Content Card -->
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <span class="timeline-pill-badge">JUL 2026</span>
+                <span class="timeline-status-label">MILESTONE INITIATED</span>
+              </div>
+
+              <h4 class="timeline-card-title">Joined the AI Fellowship</h4>
+
+              <p class="timeline-card-desc">
+                Accepted into an intensive fellowship to immerse in cutting-edge generative models, multimodal prompt architectures, and creative computing frontiers.
+              </p>
+
+              <ul class="timeline-checklist">
+                <li class="timeline-check-item">
+                  <span class="check-icon-wrap">
+                    <i data-lucide="check-circle-2"></i>
+                  </span>
+                  <span class="check-item-text">Foundation model mechanics &amp; latent space manipulation</span>
+                </li>
+                <li class="timeline-check-item">
+                  <span class="check-icon-wrap">
+                    <i data-lucide="check-circle-2"></i>
+                  </span>
+                  <span class="check-item-text">Cross-modal creative storytelling pipelines</span>
+                </li>
+                <li class="timeline-check-item">
+                  <span class="check-icon-wrap">
+                    <i data-lucide="check-circle-2"></i>
+                  </span>
+                  <span class="check-item-text">Multi-agent generative workflows</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Milestone 2: PRESENT (Left side) -->
+          <div class="timeline-entry entry-left">
+            <!-- Central Node Marker on Spine with Halo Pulse -->
+            <div class="timeline-node-marker node-active">
+              <div class="node-pulse-ring"></div>
+              <div class="node-core"></div>
+            </div>
+
+            <!-- Milestone Content Card -->
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <span class="timeline-pill-badge badge-present">PRESENT</span>
+                <span class="timeline-status-label">ACTIVE FRONTIER</span>
+              </div>
+
+              <h4 class="timeline-card-title">Exploring · Creating · Building</h4>
+
+              <p class="timeline-card-desc">
+                Actively designing and shipping speculative commercial specs, cultural heritage documentaries, and cognitive science visual essays.
+              </p>
+
+              <ul class="timeline-checklist">
+                <li class="timeline-check-item">
+                  <span class="check-icon-wrap">
+                    <i data-lucide="check-circle-2"></i>
+                  </span>
+                  <span class="check-item-text">High-fidelity camera choreography in AI video models</span>
+                </li>
+                <li class="timeline-check-item">
+                  <span class="check-icon-wrap">
+                    <i data-lucide="check-circle-2"></i>
+                  </span>
+                  <span class="check-item-text">Generative sound design &amp; sonic score synchronization</span>
+                </li>
+                <li class="timeline-check-item">
+                  <span class="check-icon-wrap">
+                    <i data-lucide="check-circle-2"></i>
+                  </span>
+                  <span class="check-item-text">Interactive 3D WebGL interfaces for generative artifacts</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fellowship Pillars Section (Screenshot 3) -->
+        <div class="fellowship-pillars-wrapper">
+          <!-- Subtle Gradient Divider Line -->
+          <div class="pillars-divider"></div>
+
+          <div class="pillars-header">
+            <span class="pillars-eyebrow">FELLOWSHIP RESEARCH SPECIALIZATIONS</span>
+            <h3 class="pillars-main-title">Core Fellowship Pillars</h3>
+          </div>
+
+          <div class="pillars-grid">
+            <!-- Pillar 1: Generative AI -->
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <h4 class="pillar-title">Generative AI</h4>
+              <p class="pillar-desc">
+                Synthesizing visual, textual, and audio modalities into cohesive worlds.
+              </p>
+            </div>
+
+            <!-- Pillar 2: Visual Storytelling -->
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <h4 class="pillar-title">Visual Storytelling</h4>
+              <p class="pillar-desc">
+                Crafting emotional arcs, cinematic pacing, and metaphorical framing.
+              </p>
+            </div>
+
+            <!-- Pillar 3: Creative Technology -->
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <h4 class="pillar-title">Creative Technology</h4>
+              <p class="pillar-desc">
+                Bridging interactive web computing, 3D graphics, and AI APIs.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Action Badge Pill -->
+          <div class="fellowship-bottom-action">
+            <a href="#works" class="fellowship-spec-pill">
+              <i data-lucide="folder-kanban" class="spec-pill-icon"></i>
+              <span>FELLOWSHIP RESEARCH &amp; SPEC WORK</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Selected Work & Experiments Section (Exact Replica of AI Studio Screenshots) -->
+      <section id="works" class="works-showcase-section">
+        <!-- Section Header Row -->
+        <div class="works-header-row">
+          <div class="works-header-left">
+            <h2 class="works-main-title">Selected Work &amp; Experiments</h2>
+            <p class="works-lead-desc">
+              Personal creative experiments, speculative commercials, cultural folklore studies, and cognitive science visual essays.
+            </p>
+          </div>
+          <div class="works-header-right">
+            <div class="research-archive-pill">
+              <span class="pulse-dot"></span>
+              <span>RESEARCH ARCHIVE // 2026 SPEC</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Pills Bar -->
+        <div class="works-filters-bar">
+          <button class="filter-pill-btn active" data-filter="all">ALL</button>
+          <button class="filter-pill-btn" data-filter="video">VIDEO</button>
+          <button class="filter-pill-btn" data-filter="image">IMAGE</button>
+          <button class="filter-pill-btn" data-filter="commercial">COMMERCIAL</button>
+          <button class="filter-pill-btn" data-filter="education">EDUCATION</button>
+          <button class="filter-pill-btn" data-filter="experiment">EXPERIMENT</button>
+        </div>
+
+        <!-- 3-Column Work Cards Grid -->
+        <div class="works-catalog-grid" id="works-catalog-grid">
+          <!-- Card 1: BAR NONE -->
+          <article class="work-card" data-category="commercial video" data-project="bar-none">
+            <div class="work-card-media" id="bar-none-card-media">
+              <div class="media-badge-left">COMMERCIAL</div>
+              <div class="media-badge-right">FEATURED SPEC</div>
+              <video
+                id="bar-none-work-video"
+                class="work-card-video"
+                poster="assets/video/bar-none-poster.png"
+                preload="metadata"
+                playsinline
+                loop
+              >
+                <source src="assets/video/bar-none.mp4" type="video/mp4" />
+                <source src="Bar None.mp4" type="video/mp4" />
+              </video>
+              <div class="work-play-overlay" id="bar-none-work-play-overlay" title="Play Video">
+                <div class="work-play-circle">
+                  <i data-lucide="play" class="work-play-icon"></i>
+                </div>
+              </div>
+              <div class="video-sound-pill" id="bar-none-sound-toggle" title="Toggle Sound">
+                <i data-lucide="volume-x"></i>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <div class="card-meta-row">
+                <span class="card-category">AI Product Commercial · 2026</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">BAR NONE</h3>
+              <p class="card-desc">
+                A cinematic AI-generated product commercial that transforms the Bar None concept into a polished high-octane visual experience.
+              </p>
+              <div class="card-tools-row">
+                <span class="tool-tag">ChatGPT</span>
+                <span class="tool-tag">Google Flow</span>
+                <span class="tool-tag">Canva</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 2: KARUPPASAMY TEMPLE -->
+          <article class="work-card" data-category="video experiment" data-project="karuppasamy-temple">
+            <div class="work-card-media" id="temple-card-media">
+              <div class="media-badge-left">VIDEO</div>
+              <div class="media-badge-right">FEATURED SPEC</div>
+              <video
+                id="temple-work-video"
+                class="work-card-video"
+                poster="assets/images/karuppasamy-temple.png"
+                preload="metadata"
+                playsinline
+                loop
+              >
+                <source src="assets/video/karuppasamy-temple.mp4" type="video/mp4" />
+                <source src="Karuppasamy Temple.mp4" type="video/mp4" />
+              </video>
+              <div class="work-play-overlay" id="temple-work-play-overlay" title="Play Video">
+                <div class="work-play-circle">
+                  <i data-lucide="play" class="work-play-icon"></i>
+                </div>
+              </div>
+              <div class="video-sound-pill" id="temple-sound-toggle" title="Toggle Sound">
+                <i data-lucide="volume-x"></i>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <div class="card-meta-row">
+                <span class="card-category">AI Cinematic Documentary · 2026</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">KARUPPASAMY TEMPLE</h3>
+              <p class="card-desc">
+                A cinematic AI-generated documentary-style video that explores the atmosphere, traditions and cultural essence of ancient South Indian folklore.
+              </p>
+              <div class="card-tools-row">
+                <span class="tool-tag">ChatGPT</span>
+                <span class="tool-tag">Gemini</span>
+                <span class="tool-tag">Claude</span>
+                <span class="tool-tag">Google Flow</span>
+                <span class="tool-tag">Canva</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 3: WHY CAN'T YOUR BRAIN LET IT GO? -->
+          <article class="work-card" data-category="education image" data-project="brain-let-go">
+            <div class="work-card-media carousel-card-media" id="brain-carousel-card">
+              <div class="media-badge-left">CAROUSEL SPEC</div>
+              <div class="carousel-counter-pill" id="brain-counter-pill">1 / 4</div>
+              
+              <!-- Pop-up Reader Trigger Pill -->
+              <button class="carousel-expand-btn" id="brain-carousel-expand-btn" type="button" title="Pop up carousel to read in high resolution">
+                <i data-lucide="maximize-2"></i>
+                <span>Click to Read</span>
+              </button>
+
+              <!-- Carousel Slides Track -->
+              <div class="work-carousel-container" id="brain-carousel-track">
+                <div class="carousel-slide active" data-index="0">
+                  <img src="assets/images/carousel/brain-slide-1.jpg" alt="Why Can't Your Brain Let It Go? - Slide 1" class="carousel-img" />
+                </div>
+                <div class="carousel-slide" data-index="1">
+                  <img src="assets/images/carousel/brain-slide-2.jpg" alt="Your Brain is Built to Remember the Cringe - Slide 2" class="carousel-img" />
+                </div>
+                <div class="carousel-slide" data-index="2">
+                  <img src="assets/images/carousel/brain-slide-3.jpg" alt="The More You Replay It, The Stronger The Memory - Slide 3" class="carousel-img" />
+                </div>
+                <div class="carousel-slide" data-index="3">
+                  <img src="assets/images/carousel/brain-slide-4.jpg" alt="You Can't Erase The Memory, But You Can Change Its Power - Slide 4" class="carousel-img" />
+                </div>
+              </div>
+
+              <!-- Carousel Arrow Navigation Controls -->
+              <button class="carousel-nav-btn prev" id="brain-carousel-prev" aria-label="Previous Slide">
+                <i data-lucide="chevron-left"></i>
+              </button>
+              <button class="carousel-nav-btn next" id="brain-carousel-next" aria-label="Next Slide">
+                <i data-lucide="chevron-right"></i>
+              </button>
+
+              <!-- Pagination Dots -->
+              <div class="carousel-dots-bar" id="brain-carousel-dots">
+                <span class="carousel-dot active" data-slide="0"></span>
+                <span class="carousel-dot" data-slide="1"></span>
+                <span class="carousel-dot" data-slide="2"></span>
+                <span class="carousel-dot" data-slide="3"></span>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <div class="card-meta-row">
+                <span class="card-category">AI Educational Carousel · 2026</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">WHY CAN'T YOUR BRAIN LET IT GO?</h3>
+              <p class="card-desc">
+                An AI-powered educational carousel that turns a complex psychological concept into a simple, relatable and visually captivating breakdown.
+              </p>
+              <div class="card-tools-row">
+                <span class="tool-tag">Gemini</span>
+                <span class="tool-tag">Claude</span>
+                <span class="tool-tag">ChatGPT</span>
+                <span class="tool-tag">Midjourney</span>
+                <span class="tool-tag">Canva</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: Campa Energy -->
+          <article class="work-card" data-category="commercial video" data-project="campa-energy">
+            <div class="work-card-media" id="campa-card-media">
+              <div class="media-badge-left">COMMERCIAL</div>
+              <div class="media-badge-right">FEATURED SPEC</div>
+              <video
+                id="campa-work-video"
+                class="work-card-video"
+                poster="assets/images/campa-energy.png"
+                preload="metadata"
+                playsinline
+                loop
+              >
+                <source src="assets/video/campa-energy.mp4" type="video/mp4" />
+                <source src="Campa.mp4" type="video/mp4" />
+              </video>
+              <div class="work-play-overlay" id="campa-work-play-overlay" title="Play Video">
+                <div class="work-play-circle">
+                  <i data-lucide="play" class="work-play-icon"></i>
+                </div>
+              </div>
+              <div class="video-sound-pill" id="campa-sound-toggle" title="Toggle Sound">
+                <i data-lucide="volume-x"></i>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <div class="card-meta-row">
+                <span class="card-category">Commercial Video Spec · 2026</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">CAMPA ENERGY</h3>
+              <p class="card-desc">
+                A vibrant personal creative spec film showcasing kinetic typography, surging electric citrus liquid flows, and hyper-caffeinated energy aesthetics.
+              </p>
+              <div class="card-tools-row">
+                <span class="tool-tag">Midjourney</span>
+                <span class="tool-tag">Google Flow</span>
+                <span class="tool-tag">Gemini</span>
+                <span class="tool-tag">Suno</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 5: Wild Stone -->
+          <article class="work-card" data-category="commercial video experiment" data-project="wild-stone">
+            <div class="work-card-media" id="wild-stone-card-media">
+              <div class="media-badge-left">COMMERCIAL</div>
+              <div class="media-badge-right">FEATURED SPEC</div>
+              <video
+                id="wild-stone-work-video"
+                class="work-card-video"
+                poster="assets/images/wild-stone.png"
+                preload="metadata"
+                playsinline
+                loop
+              >
+                <source src="assets/video/wild-stone.mp4" type="video/mp4" />
+                <source src="Wild Stone.mp4" type="video/mp4" />
+              </video>
+              <div class="work-play-overlay" id="wild-stone-work-play-overlay" title="Play Video">
+                <div class="work-play-circle">
+                  <i data-lucide="play" class="work-play-icon"></i>
+                </div>
+              </div>
+              <div class="video-sound-pill" id="wild-stone-sound-toggle" title="Toggle Sound">
+                <i data-lucide="volume-x"></i>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <div class="card-meta-row">
+                <span class="card-category">Commercial Video Spec · 2026</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">WILD STONE</h3>
+              <p class="card-desc">
+                An atmospheric personal spec piece capturing primal elemental textures, volcanic obsidian rock, and mist-shrouded fragrance notes.
+              </p>
+              <div class="card-tools-row">
+                <span class="tool-tag">Midjourney</span>
+                <span class="tool-tag">Google Flow</span>
+                <span class="tool-tag">Canva</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 6: Ibaco -->
+          <article class="work-card" data-category="commercial video" data-project="ibaco">
+            <div class="work-card-media" id="ibaco-card-media">
+              <div class="media-badge-left">COMMERCIAL</div>
+              <div class="media-badge-right">FEATURED SPEC</div>
+              <video
+                id="ibaco-work-video"
+                class="work-card-video"
+                poster="assets/images/ibaco.png"
+                preload="metadata"
+                playsinline
+                loop
+              >
+                <source src="assets/video/ibaco.mp4" type="video/mp4" />
+                <source src="Ibaco.mp4" type="video/mp4" />
+              </video>
+              <div class="work-play-overlay" id="ibaco-work-play-overlay" title="Play Video">
+                <div class="work-play-circle">
+                  <i data-lucide="play" class="work-play-icon"></i>
+                </div>
+              </div>
+              <div class="video-sound-pill" id="ibaco-sound-toggle" title="Toggle Sound">
+                <i data-lucide="volume-x"></i>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <div class="card-meta-row">
+                <span class="card-category">Commercial Video Spec · 2026</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">IBACO</h3>
+              <p class="card-desc">
+                A sensory personal spec project exploring fluid chocolate viscosity, velvety scoops, and decadent confectionery diffusion.
+              </p>
+              <div class="card-tools-row">
+                <span class="tool-tag">Midjourney</span>
+                <span class="tool-tag">Google Flow</span>
+                <span class="tool-tag">Canva</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7: Life on Mars -->
+          <article class="work-card" data-category="education video" data-project="life-on-mars">
+            <div class="work-card-media" id="mars-card-media">
+              <div class="media-badge-left">EDUCATION</div>
+              <div class="media-badge-right">FEATURED SPEC</div>
+              <video
+                id="mars-work-video"
+                class="work-card-video"
+                poster="assets/images/life-on-mars.png"
+                preload="metadata"
+                playsinline
+                loop
+              >
+                <source src="assets/video/life-on-mars.mp4" type="video/mp4" />
+                <source src="Mars.mp4" type="video/mp4" />
+              </video>
+              <div class="work-play-overlay" id="mars-work-play-overlay" title="Play Video">
+                <div class="work-play-circle">
+                  <i data-lucide="play" class="work-play-icon"></i>
+                </div>
+              </div>
+              <div class="video-sound-pill" id="mars-sound-toggle" title="Toggle Sound">
+                <i data-lucide="volume-x"></i>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <div class="card-meta-row">
+                <span class="card-category">AI Education Film · 2026</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">LIFE ON MARS</h3>
+              <p class="card-desc">
+                A speculative science visual essay examining terraforming, sub-surface ice caverns, and humanity's multi-planetary future.
+              </p>
+              <div class="card-tools-row">
+                <span class="tool-tag">Midjourney</span>
+                <span class="tool-tag">Google Flow</span>
+                <span class="tool-tag">Claude</span>
+                <span class="tool-tag">Suno</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 8: Women Struggles -->
+          <article class="work-card" data-category="image experiment" data-project="women-struggles">
+            <div class="work-card-media" id="women-struggles-card-media" style="cursor: pointer;">
+              <div class="media-badge-left">STORYTELLING</div>
+              <div class="media-badge-right">VISUAL SPEC</div>
+              <img
+                src="assets/images/women-struggles.jpg"
+                alt="Women Struggles - AI Visual Storytelling"
+                class="work-card-img"
+                style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;transition:transform 0.4s ease;"
+              />
+              <div class="work-play-overlay" style="background:rgba(3,8,20,0.15);opacity:0;transition:opacity 0.3s ease;">
+                <div class="work-play-circle" style="width:44px;height:44px;">
+                  <i data-lucide="maximize-2" style="width:18px;height:18px;"></i>
+                </div>
+              </div>
+            </div>
+            <div class="work-card-body">
+              <div class="card-meta-row">
+                <span class="card-category">AI Visual Storytelling · 2026</span>
+                <span class="card-year">2026</span>
+              </div>
+              <h3 class="card-title">WOMEN STRUGGLES</h3>
+              <p class="card-desc">
+                A poignant, cinematic AI visual narrative depicting societal burdens, resilience, and the unyielding pursuit of education, career, and personal dignity.
+              </p>
+              <div class="card-tools-row">
+                <span class="tool-tag">Midjourney</span>
+                <span class="tool-tag">ChatGPT</span>
+                <span class="tool-tag">Canva</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Case Studies: Deep Dives & Film Studies -->
+      <section id="spotlight" class="case-studies-showcase-section">
+        <!-- Section Header -->
+        <div class="case-studies-header">
+          <div class="featured-eyebrow-pill">
+            <span class="sparkle-symbol">✦</span>
+            <span>FEATURED FELLOWSHIP CASE STUDIES</span>
+          </div>
+          <h2 class="case-studies-title">Deep Dives &amp; Film Studies</h2>
+          <p class="case-studies-subtitle">
+            Detailed dissections of concept ideation, prompt engineering, generative video choreography, and creative learnings.
+          </p>
+          <div class="case-studies-disclaimer-pill">
+            <span>PERSONAL FELLOWSHIP EXPERIMENTS · NOT PAID CLIENT WORK</span>
+          </div>
+        </div>
+
+        <!-- Case Studies List -->
+        <div class="case-studies-list">
+
+          <!-- Study 01: BAR NONE -->
+          <article class="case-study-card study-grid-normal" id="study-01">
+            <!-- Left: Media -->
+            <div class="study-media-col">
+              <div class="study-num-badge">FELLOWSHIP STUDY 01</div>
+              <div class="study-media-wrapper" id="study-bar-none-media">
+                <video
+                  id="study-bar-none-video"
+                  class="study-media-video"
+                  poster="assets/video/bar-none-poster.png"
+                  preload="metadata"
+                  playsinline
+                  loop
+                >
+                  <source src="assets/video/bar-none.mp4" type="video/mp4" />
+                  <source src="Bar None.mp4" type="video/mp4" />
+                </video>
+                <div class="study-media-overlay" id="study-bar-none-play-overlay" title="Play Commercial">
+                  <div class="study-play-circle">
+                    <i data-lucide="play"></i>
+                  </div>
+                </div>
+                <div class="video-sound-pill" id="study-bar-none-sound-toggle" title="Toggle Sound">
+                  <i data-lucide="volume-x"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Content Breakdown -->
+            <div class="study-content-col">
+              <h3 class="study-title">BAR NONE</h3>
+              <div class="study-tag">AI Product Commercial · 2026</div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">PROBLEM</h4>
+                <p class="study-field-text">
+                  How can a protein bar be presented as a premium, energetic product without a conventional commercial production?
+                </p>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">SOLUTION</h4>
+                <p class="study-field-text">
+                  Created a cinematic product world using generative AI, combining product visuals, dynamic scenes and creative storytelling.
+                </p>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">WORKFLOW</h4>
+                <div class="study-workflow-box">
+                  <span class="wf-step">Concept</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Prompt Refinement</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">AI Generation</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Selection</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Video Edit</span>
+                </div>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">OUTPUT</h4>
+                <p class="study-field-text">
+                  A cinematic AI-generated product commercial that transforms the Bar None concept into a polished advertising experience.
+                </p>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">TOOLS USED</h4>
+                <div class="study-tools-list">
+                  <div class="study-tool-pill">
+                    <span class="tool-name">ChatGPT</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Prompt refinement &amp; creative direction</span>
+                  </div>
+                  <div class="study-tool-pill">
+                    <span class="tool-name">Google Flow</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Video generation</span>
+                  </div>
+                  <div class="study-tool-pill">
+                    <span class="tool-name">Canva</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Editing &amp; final composition</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Study 02: KARUPPASAMY TEMPLE (Reversed Layout) -->
+          <article class="case-study-card study-grid-reversed" id="study-02">
+            <!-- Left: Content Breakdown -->
+            <div class="study-content-col">
+              <h3 class="study-title">KARUPPASAMY TEMPLE</h3>
+              <div class="study-tag">AI Cinematic Documentary · 2026</div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">PROBLEM</h4>
+                <p class="study-field-text">
+                  How can the spiritual identity and cultural atmosphere of Karuppasamy worship be transformed into a cinematic visual experience while remaining authentic?
+                </p>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">SOLUTION</h4>
+                <p class="study-field-text">
+                  Created a visually immersive documentary concept using AI-generated environments, devotional lighting, and cultural iconography rooted in South Indian traditions.
+                </p>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">WORKFLOW</h4>
+                <div class="study-workflow-box">
+                  <span class="wf-step">Research &amp; Ideation</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Story Development</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Prompt Refinement</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">AI Generation</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Video Creation</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Edit</span>
+                </div>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">OUTPUT</h4>
+                <p class="study-field-text">
+                  A cinematic AI-generated documentary-style video that explores the atmosphere, traditions and cultural essence of Karuppasamy worship through visual storytelling.
+                </p>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">TOOLS USED</h4>
+                <div class="study-tools-list">
+                  <div class="study-tool-pill">
+                    <span class="tool-name">ChatGPT</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Ideation &amp; prompt refinement</span>
+                  </div>
+                  <div class="study-tool-pill">
+                    <span class="tool-name">Gemini</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Research &amp; creative development</span>
+                  </div>
+                  <div class="study-tool-pill">
+                    <span class="tool-name">Claude</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Story development &amp; refinement</span>
+                  </div>
+                  <div class="study-tool-pill">
+                    <span class="tool-name">Google Flow</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Cinematic video generation</span>
+                  </div>
+                  <div class="study-tool-pill">
+                    <span class="tool-name">Canva</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Editing &amp; final composition</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Media -->
+            <div class="study-media-col">
+              <div class="study-num-badge">FELLOWSHIP STUDY 02</div>
+              <div class="study-media-wrapper" id="study-temple-media">
+                <video
+                  id="study-temple-video"
+                  class="study-media-video"
+                  poster="assets/images/karuppasamy-temple.png"
+                  preload="metadata"
+                  playsinline
+                  loop
+                >
+                  <source src="assets/video/karuppasamy-temple.mp4" type="video/mp4" />
+                  <source src="Karuppasamy Temple.mp4" type="video/mp4" />
+                </video>
+                <div class="study-media-overlay" id="study-temple-play-overlay" title="Play Documentary Spec">
+                  <div class="study-play-circle">
+                    <i data-lucide="play"></i>
+                  </div>
+                </div>
+                <div class="video-sound-pill" id="study-temple-sound-toggle" title="Toggle Sound">
+                  <i data-lucide="volume-x"></i>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Study 03: WHY CAN'T YOUR BRAIN LET IT GO? -->
+          <article class="case-study-card study-grid-normal" id="study-03">
+            <!-- Left: Media (Interactive Carousel) -->
+            <div class="study-media-col">
+              <div class="study-num-badge">FELLOWSHIP STUDY 03</div>
+              <div class="study-media-wrapper study-carousel-wrapper" id="study-brain-carousel-card">
+                <div class="carousel-counter-pill" id="study-brain-counter-pill">1 / 4</div>
+                
+                <!-- Pop-up Reader Trigger Pill -->
+                <button class="carousel-expand-btn" id="study-brain-carousel-expand-btn" type="button" title="Pop up carousel to read in high resolution">
+                  <i data-lucide="maximize-2"></i>
+                  <span>Click to Read</span>
+                </button>
+
+                <!-- Carousel Slides Track -->
+                <div class="study-carousel-container" id="study-brain-carousel-track">
+                  <div class="study-carousel-slide active" data-index="0">
+                    <img src="assets/images/carousel/brain-slide-1.jpg" alt="Why Can't Your Brain Let It Go? - Slide 1" class="study-carousel-img" />
+                  </div>
+                  <div class="study-carousel-slide" data-index="1">
+                    <img src="assets/images/carousel/brain-slide-2.jpg" alt="Your Brain is Built to Remember the Cringe - Slide 2" class="study-carousel-img" />
+                  </div>
+                  <div class="study-carousel-slide" data-index="2">
+                    <img src="assets/images/carousel/brain-slide-3.jpg" alt="The More You Replay It, The Stronger The Memory - Slide 3" class="study-carousel-img" />
+                  </div>
+                  <div class="study-carousel-slide" data-index="3">
+                    <img src="assets/images/carousel/brain-slide-4.jpg" alt="You Can't Erase The Memory, But You Can Change Its Power - Slide 4" class="study-carousel-img" />
+                  </div>
+                </div>
+
+                <!-- Carousel Arrow Navigation Controls -->
+                <button class="carousel-nav-btn prev" id="study-brain-carousel-prev" aria-label="Previous Slide">
+                  <i data-lucide="chevron-left"></i>
+                </button>
+                <button class="carousel-nav-btn next" id="study-brain-carousel-next" aria-label="Next Slide">
+                  <i data-lucide="chevron-right"></i>
+                </button>
+
+                <!-- Pagination Dots -->
+                <div class="carousel-dots-bar" id="study-brain-carousel-dots">
+                  <span class="carousel-dot active" data-slide="0"></span>
+                  <span class="carousel-dot" data-slide="1"></span>
+                  <span class="carousel-dot" data-slide="2"></span>
+                  <span class="carousel-dot" data-slide="3"></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Content Breakdown -->
+            <div class="study-content-col">
+              <h3 class="study-title">WHY CAN'T YOUR BRAIN LET IT GO?</h3>
+              <div class="study-tag">AI Educational Carousel · 2026</div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">PROBLEM</h4>
+                <p class="study-field-text">
+                  How can the complex cycle of overthinking and repetitive thoughts be explained in a way that feels simple, relatable and visually engaging?
+                </p>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">SOLUTION</h4>
+                <p class="study-field-text">
+                  Created a visual storytelling carousel that breaks down the science behind overthinking into simple ideas, relatable situations and AI-generated visuals that are easy to understand.
+                </p>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">WORKFLOW</h4>
+                <div class="study-workflow-box">
+                  <span class="wf-step">Research</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Concept</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Story Structure</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Prompt Refinement</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">AI Visual Generation</span>
+                  <span class="wf-arrow">➔</span>
+                  <span class="wf-step">Carousel Design</span>
+                </div>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">OUTPUT</h4>
+                <p class="study-field-text">
+                  An AI-powered educational carousel that turns a complex psychological concept into a simple, relatable and visually engaging story.
+                </p>
+              </div>
+
+              <div class="study-field">
+                <h4 class="study-field-label">TOOLS USED</h4>
+                <div class="study-tools-list">
+                  <div class="study-tool-pill">
+                    <span class="tool-name">Gemini</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Research &amp; concept development</span>
+                  </div>
+                  <div class="study-tool-pill">
+                    <span class="tool-name">Claude</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Content structuring &amp; refinement</span>
+                  </div>
+                  <div class="study-tool-pill">
+                    <span class="tool-name">ChatGPT</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Prompt refinement &amp; visual direction</span>
+                  </div>
+                  <div class="study-tool-pill">
+                    <span class="tool-name">Midjourney</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">AI visual generation</span>
+                  </div>
+                  <div class="study-tool-pill">
+                    <span class="tool-name">Canva</span>
+                    <span class="tool-sep">—</span>
+                    <span class="tool-role">Carousel design &amp; final composition</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <!-- Skills, Tools & Modalities Section -->
+      <section id="skills" class="skills-showcase-section">
+        <div class="skills-header">
+          <div class="skills-eyebrow-pill">
+            <span class="sparkle-symbol">✦</span>
+            <span>CREATIVE TOOLKIT &amp; CAPABILITIES</span>
+          </div>
+          <h2 class="skills-title">Skills, Tools &amp; Modalities</h2>
+          <p class="skills-subtitle">
+            The generative models, creative software, and cognitive disciplines I orchestrate to bring visionary ideas to life.
+          </p>
+
+          <!-- Toggle Pills Filter Bar -->
+          <div class="skills-toggle-bar">
+            <button class="skills-toggle-btn active" id="toggle-tools-btn" data-target="tools-grid">
+              TOOLS &amp; PLATFORMS
+            </button>
+            <button class="skills-toggle-btn" id="toggle-disciplines-btn" data-target="disciplines-grid">
+              CORE SKILLS &amp; DISCIPLINES
+            </button>
+          </div>
+        </div>
+
+        <!-- Tools & Platforms Grid (8 Cards: 2 rows of 4) -->
+        <div class="skills-grid active" id="tools-grid">
+          <!-- Card 1: Gemini -->
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <span class="skill-badge-pill">MULTIMODAL AI</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Gemini</h3>
+              <p class="skill-card-desc">
+                Multimodal reasoning, cross-media narrative architectures, and code-assisted visual logic.
+              </p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">MODALITY</span>
+              <span class="skill-meta-val">LLM &amp; Reasoning</span>
+            </div>
+          </div>
+
+          <!-- Card 2: ChatGPT -->
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box">
+                <i data-lucide="cpu"></i>
+              </div>
+              <span class="skill-badge-pill">GENERATIVE LOGIC</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">ChatGPT</h3>
+              <p class="skill-card-desc">
+                Deep narrative ideation, conceptual structuring, and complex prompt sequence synthesis.
+              </p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">MODALITY</span>
+              <span class="skill-meta-val">LLM &amp; Reasoning</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Claude -->
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box">
+                <i data-lucide="book-open"></i>
+              </div>
+              <span class="skill-badge-pill">NUANCE ENGINE</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Claude</h3>
+              <p class="skill-card-desc">
+                Long-form editorial scripting, nuance calibration, and contextual storytelling synthesis.
+              </p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">MODALITY</span>
+              <span class="skill-meta-val">LLM &amp; Reasoning</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Grok -->
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box">
+                <i data-lucide="zap"></i>
+              </div>
+              <span class="skill-badge-pill">REAL-TIME INSIGHTS</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Grok</h3>
+              <p class="skill-card-desc">
+                Real-time trend analysis, contrarian ideation, and rapid creative divergence.
+              </p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">MODALITY</span>
+              <span class="skill-meta-val">LLM &amp; Reasoning</span>
+            </div>
+          </div>
+
+          <!-- Card 5: Midjourney -->
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box">
+                <i data-lucide="image"></i>
+              </div>
+              <span class="skill-badge-pill">VISUAL SYNTHESIS</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Midjourney</h3>
+              <p class="skill-card-desc">
+                Cinematic visual world-building, photorealistic lighting design, and stylistic consistency.
+              </p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">MODALITY</span>
+              <span class="skill-meta-val">Visual &amp; Diffusion</span>
+            </div>
+          </div>
+
+          <!-- Card 6: Google Flow -->
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box">
+                <i data-lucide="clapperboard"></i>
+              </div>
+              <span class="skill-badge-pill">KINETIC AI</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Google Flow</h3>
+              <p class="skill-card-desc">
+                Generative video orchestration, visual motion choreography, and cinematic camera moves.
+              </p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">MODALITY</span>
+              <span class="skill-meta-val">Visual &amp; Diffusion</span>
+            </div>
+          </div>
+
+          <!-- Card 7: Suno -->
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box">
+                <i data-lucide="volume-2"></i>
+              </div>
+              <span class="skill-badge-pill">SONIC AI</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Suno</h3>
+              <p class="skill-card-desc">
+                Generative orchestral soundscapes, atmospheric audio design, and emotional sound cues.
+              </p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">MODALITY</span>
+              <span class="skill-meta-val">Audio &amp; Motion</span>
+            </div>
+          </div>
+
+          <!-- Card 8: Canva -->
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box">
+                <i data-lucide="layout"></i>
+              </div>
+              <span class="skill-badge-pill">VISUAL SYSTEMS</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Canva</h3>
+              <p class="skill-card-desc">
+                Layout refinement, typographic hierarchy, editorial composition, and presentation polish.
+              </p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">MODALITY</span>
+              <span class="skill-meta-val">Design &amp; Direction</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Skills & Disciplines Grid (Alternative View) -->
+        <div class="skills-grid" id="disciplines-grid" style="display: none;">
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box"><i data-lucide="terminal"></i></div>
+              <span class="skill-badge-pill">LATENT ARCHITECTURE</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Prompt Engineering</h3>
+              <p class="skill-card-desc">Systematic multi-vector conditioning, negative token budgeting, and precision latent steering.</p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">DISCIPLINE</span>
+              <span class="skill-meta-val">Latent Control</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box"><i data-lucide="film"></i></div>
+              <span class="skill-badge-pill">TEMPORAL MOTION</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">AI Film Direction</h3>
+              <p class="skill-card-desc">Camera vector trajectory planning, frame-to-frame coherence, and cinematic pacing.</p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">DISCIPLINE</span>
+              <span class="skill-meta-val">Cinematography</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box"><i data-lucide="globe"></i></div>
+              <span class="skill-badge-pill">CONCEPTUAL LORE</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Visual World-Building</h3>
+              <p class="skill-card-desc">Holistic aesthetic environments, lighting guides, cultural iconography, and material physics.</p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">DISCIPLINE</span>
+              <span class="skill-meta-val">Art Direction</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box"><i data-lucide="compass"></i></div>
+              <span class="skill-badge-pill">SPECULATIVE DESIGN</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Speculative Storytelling</h3>
+              <p class="skill-card-desc">Crafting philosophical visual essays examining future humanity, planetary frontiers, and memories.</p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">DISCIPLINE</span>
+              <span class="skill-meta-val">Narrative Strategy</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box"><i data-lucide="code-2"></i></div>
+              <span class="skill-badge-pill">CREATIVE CODE</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">WebGL &amp; Interaction</h3>
+              <p class="skill-card-desc">Three.js shader stages, dynamic particle systems, and real-time reactive user interfaces.</p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">DISCIPLINE</span>
+              <span class="skill-meta-val">Creative Technology</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box"><i data-lucide="music"></i></div>
+              <span class="skill-badge-pill">SONIC ATMOSPHERES</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Audio &amp; Soundscape Design</h3>
+              <p class="skill-card-desc">Generative orchestral soundscapes, emotional tonal shifts, and synchronized foley tracks.</p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">DISCIPLINE</span>
+              <span class="skill-meta-val">Sonic Production</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box"><i data-lucide="type"></i></div>
+              <span class="skill-badge-pill">TYPOGRAPHIC POLISH</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Editorial Typography</h3>
+              <p class="skill-card-desc">Editorial layouts, tracked display titles, packaging systems, and structural alignment.</p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">DISCIPLINE</span>
+              <span class="skill-meta-val">Graphic Design</span>
+            </div>
+          </div>
+
+          <div class="skill-card">
+            <div class="skill-card-top">
+              <div class="skill-icon-box"><i data-lucide="git-branch"></i></div>
+              <span class="skill-badge-pill">PIPELINE ARCHITECTURE</span>
+            </div>
+            <div class="skill-card-body">
+              <h3 class="skill-card-title">Cognitive AI Workflows</h3>
+              <p class="skill-card-desc">Synthesizing LLM narrative brainstorming, visual diffusion engines, and video choreography into unified pipelines.</p>
+            </div>
+            <div class="skill-card-bottom">
+              <span class="skill-meta-label">DISCIPLINE</span>
+              <span class="skill-meta-val">Workflow Design</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive Generative Studio Section (Gemini Multimodal Lab) -->
+      <section id="studio" class="lab-section">
+        <div class="section-header">
+          <div class="section-eyebrow">
+            <i data-lucide="sparkles"></i>
+            <span>GEMINI MULTIMODAL LAB</span>
+          </div>
+          <h2 class="section-heading">Interactive Generative Studio</h2>
+          <p class="section-lead">
+            Experience Mohan Raaju's generative AI workflow. Generate cinematic commercial storyboards, enhance raw prompts, or converse with Mohan's AI Fellow Persona.
+          </p>
+        </div>
+
+        <div class="lab-container">
+          <!-- Lab Control Toolbar -->
+          <div class="lab-toolbar">
+            <div class="lab-modes">
+              <button class="lab-mode-btn active" data-mode="storyboard">
+                <i data-lucide="clapperboard"></i>
+                <span>Commercial Storyboard</span>
+              </button>
+              <button class="lab-mode-btn" data-mode="alchemist">
+                <i data-lucide="wand-2"></i>
+                <span>Prompt Alchemist</span>
+              </button>
+              <button class="lab-mode-btn" data-mode="persona">
+                <i data-lucide="message-square"></i>
+                <span>AI Fellow Persona</span>
+              </button>
+            </div>
+
+            <!-- Optional Live Gemini API Key Input -->
+            <div class="api-key-wrap">
+              <button id="api-key-toggle-btn" class="api-key-btn">
+                <i data-lucide="key"></i>
+                <span id="api-key-status-text">Using Demo Mode (Instant)</span>
+              </button>
+              <div class="api-key-popover" id="api-key-popover">
+                <p class="popover-title">Connect Gemini API Key (Optional)</p>
+                <p class="popover-sub">Run live queries with Gemini 2.5 Flash / Pro. Your key remains local in your browser session.</p>
+                <div class="popover-input-row">
+                  <input type="password" id="gemini-api-key-input" placeholder="AIzaSy..." />
+                  <button id="save-api-key-btn" class="btn btn-sm">Save</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Studio Workspace -->
+          <div class="lab-workspace">
+            <!-- Mode 1: Commercial Storyboard Generator -->
+            <div class="lab-tool active" id="tool-storyboard">
+              <div class="tool-sidebar">
+                <h3>Commercial Director</h3>
+                <p>Generate a 4-shot cinematic commercial treatment with camera directions, lighting schemes, and Veo prompts.</p>
+
+                <div class="input-group">
+                  <label for="sb-product">Product / Brand Name</label>
+                  <input type="text" id="sb-product" value="BAR NONE" placeholder="e.g. BAR NONE, Lumina Fragrance, Aura AI..." />
+                </div>
+
+                <div class="input-group">
+                  <label for="sb-category">Category</label>
+                  <select id="sb-category">
+                    <option value="protein-food" selected>Artisanal Nutrition &amp; Snack</option>
+                    <option value="luxury-perfume">Luxury Fragrance &amp; Cosmetics</option>
+                    <option value="futuristic-tech">Spatial Computing &amp; Wearables</option>
+                    <option value="electric-auto">Autonomous Electric Vehicle</option>
+                    <option value="fashion-apparel">Avant-Garde High Fashion</option>
+                  </select>
+                </div>
+
+                <div class="input-group">
+                  <label for="sb-mood">Aesthetic Mood</label>
+                  <select id="sb-mood">
+                    <option value="moody-macro" selected>Dark Moody Obsidian &amp; Macro (Current)</option>
+                    <option value="cyber-neon">Cyberpunk Prismatic Neon</option>
+                    <option value="ethereal-minimal">Ethereal Scandinavian Minimal</option>
+                    <option value="cinematic-dramatic">Warm Golden Hour 35mm Film</option>
+                  </select>
+                </div>
+
+                <button id="generate-storyboard-btn" class="btn btn-primary full-width">
+                  <i data-lucide="sparkles"></i>
+                  <span>Generate Storyboard</span>
+                </button>
+              </div>
+
+              <div class="tool-output-area">
+                <div class="output-header">
+                  <span class="output-label"><i data-lucide="film"></i> Generated Storyboard Treatment</span>
+                  <div class="output-actions">
+                    <button class="icon-btn" id="copy-storyboard-btn" title="Copy Text"><i data-lucide="copy"></i></button>
+                    <button class="icon-btn" id="regenerate-sb-btn" title="Randomize"><i data-lucide="refresh-cw"></i></button>
+                  </div>
+                </div>
+
+                <div class="storyboard-grid" id="storyboard-output">
+                  <!-- Storyboard cards dynamically populated -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Mode 2: Prompt Alchemist -->
+            <div class="lab-tool" id="tool-alchemist">
+              <div class="tool-sidebar">
+                <h3>Prompt Alchemist</h3>
+                <p>Transform brief ideas into production-grade multi-parameter prompts optimized for Veo and Imagen 3.</p>
+
+                <div class="input-group">
+                  <label for="raw-prompt-input">Raw Concept</label>
+                  <textarea id="raw-prompt-input" rows="4" placeholder="e.g. A chocolate bar breaking in slow motion with nuts falling on a dark stone table"></textarea>
+                </div>
+
+                <div class="input-group">
+                  <label>Aspect Ratio</label>
+                  <div class="chip-group" id="aspect-ratio-chips">
+                    <button class="chip active" data-val="16:9">16:9 Cinema</button>
+                    <button class="chip" data-val="9:16">9:16 Reel</button>
+                    <button class="chip" data-val="1:1">1:1 Square</button>
+                  </div>
+                </div>
+
+                <div class="input-group">
+                  <label>Camera Rig Simulation</label>
+                  <select id="camera-rig-select">
+                    <option value="arri-macro">ARRI Alexa 65 + 100mm Macro Anamorphic</option>
+                    <option value="high-speed">Phantom Flex 4K (1000 FPS Super Slow-Mo)</option>
+                    <option value="fpv-drone">FPV Micro Drone Sweep</option>
+                  </select>
+                </div>
+
+                <button id="alchemize-btn" class="btn btn-primary full-width">
+                  <i data-lucide="wand-2"></i>
+                  <span>Alchemize Prompt</span>
+                </button>
+              </div>
+
+              <div class="tool-output-area">
+                <div class="output-header">
+                  <span class="output-label"><i data-lucide="terminal"></i> Synthesized Production Prompt</span>
+                  <button class="copy-code-btn" id="copy-alchemist-btn"><i data-lucide="copy"></i> <span>Copy</span></button>
+                </div>
+                <div class="alchemist-output-box" id="alchemist-output">
+                  <div class="empty-state">
+                    <i data-lucide="wand-sparkles"></i>
+                    <p>Click "Alchemize Prompt" to synthesize full technical parameters, lighting schemes, and motion vectors.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mode 3: AI Fellow Persona Chat -->
+            <div class="lab-tool" id="tool-persona">
+              <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                  <div class="chat-message assistant">
+                    <div class="chat-avatar">MR</div>
+                    <div class="chat-bubble">
+                      <p>Hello! I am Mohan Raaju's digital twin. I explore generative AI pipelines, visual storytelling with Google Veo &amp; Gemini, 3D WebGL, and creative technology. Ask me about how the BAR NONE commercial was generated, my creative philosophy, or prompt architecture!</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="chat-suggestions">
+                  <button class="suggestion-chip">How did you create the BAR NONE commercial?</button>
+                  <button class="suggestion-chip">What is your generative AI tech stack?</button>
+                  <button class="suggestion-chip">How do you maintain temporal coherence in Veo?</button>
+                </div>
+
+                <div class="chat-input-bar">
+                  <input type="text" id="chat-input" placeholder="Ask Mohan Raaju's AI Fellow Persona..." />
+                  <button id="chat-send-btn" class="btn btn-primary"><i data-lucide="send"></i></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Collaboration & Contact Section -->
+      <section id="contact" class="contact-showcase-section">
+        <div class="contact-header">
+          <div class="contact-eyebrow-pill">
+            <span class="sparkle-symbol">✦</span>
+            <span>COLLABORATION &amp; TRANSMISSIONS</span>
+          </div>
+          <h2 class="contact-title">Turn Ideas Into Impact.</h2>
+          <p class="contact-subtitle">
+            Open to collaborations, creative projects, and conversations about AI, storytelling, and building what's next.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Card 1: Email Dispatch -->
+          <div class="contact-action-card">
+            <div class="contact-card-icon-box">
+              <i data-lucide="mail"></i>
+            </div>
+            <h3 class="contact-card-title">Email Dispatch</h3>
+            <p class="contact-card-desc">
+              Detailed project inquiries, creative collaborations, or fellowship notes.
+            </p>
+            <div class="contact-card-value">
+              <a href="mailto:mohan.aicreator99@gmail.com" class="contact-value-link" title="Click to compose email">
+                <i data-lucide="at-sign"></i>
+                <span>mohan.aicreator99@gmail.com</span>
+              </a>
+            </div>
+            <div class="contact-card-action">
+              <a href="mailto:mohan.aicreator99@gmail.com" class="contact-primary-btn" title="Compose an email to Mohan Raaju">
+                <span>Send Email</span>
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+              <button class="contact-secondary-btn" id="copy-email-btn" type="button" title="Copy email address to clipboard">
+                <i data-lucide="copy"></i>
+                <span>Copy Address</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Card 2: X / Twitter -->
+          <div class="contact-action-card">
+            <div class="contact-card-icon-box">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </div>
+            <h3 class="contact-card-title">X / Twitter</h3>
+            <p class="contact-card-desc">
+              Follow ongoing generative AI experiments, daily threads, and visual artifacts.
+            </p>
+            <div class="contact-card-value">
+              <a href="https://x.com/MohanRaaju99" target="_blank" rel="noopener noreferrer" class="contact-value-link" title="Open X profile">
+                <i data-lucide="globe"></i>
+                <span>x.com/MohanRaaju99</span>
+              </a>
+            </div>
+            <div class="contact-card-action">
+              <a href="https://x.com/MohanRaaju99" target="_blank" rel="noopener noreferrer" class="contact-primary-btn" title="Visit @MohanRaaju99 on X">
+                <span>@MohanRaaju99</span>
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+              <a href="https://x.com/MohanRaaju99" target="_blank" rel="noopener noreferrer" class="contact-secondary-btn" title="View latest posts">
+                <i data-lucide="external-link"></i>
+                <span>Open in New Tab</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3: WhatsApp Direct & Phone -->
+          <div class="contact-action-card">
+            <div class="contact-card-icon-box">
+              <i data-lucide="message-square"></i>
+            </div>
+            <h3 class="contact-card-title">WhatsApp &amp; Phone</h3>
+            <p class="contact-card-desc">
+              Direct messaging for quick project syncs, creative inquiries, or phone calls.
+            </p>
+            <div class="contact-card-value">
+              <a href="https://wa.me/919677351772" target="_blank" rel="noopener noreferrer" class="contact-value-link" title="Chat on WhatsApp">
+                <i data-lucide="phone"></i>
+                <span>+91 96773 51772</span>
+              </a>
+            </div>
+            <div class="contact-card-action">
+              <a href="https://wa.me/919677351772" target="_blank" rel="noopener noreferrer" class="contact-primary-btn" title="Chat directly on WhatsApp">
+                <span>WhatsApp (+91 96773 51772)</span>
+                <i data-lucide="arrow-up-right"></i>
+              </a>
+              <a href="tel:+919677351772" class="contact-secondary-btn" title="Call directly">
+                <i data-lucide="phone-call"></i>
+                <span>Direct Call</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Interactive Developer CLI Terminal Drawer (Slide-up modal) -->
+    <div id="terminal-drawer" class="terminal-drawer">
+      <div class="terminal-window">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <span class="dot dot-red" id="terminal-close-btn"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="terminal-title">mohan-raaju@ai-fellow-studio: ~ (v1.0.4)</span>
+          <button class="terminal-exit" id="terminal-close-btn-2">ESC</button>
+        </div>
+        <div class="terminal-body" id="terminal-output">
+          <div class="terminal-line banner-text">
+            Mohan Raaju — Creative Technologist &amp; AI Fellow CLI Environment<br />
+            Type <span class="cmd-highlight">help</span> for a list of available commands.
+          </div>
+        </div>
+        <div class="terminal-prompt-row">
+          <span class="terminal-sym">mohan@studio $</span>
+          <input type="text" id="terminal-input" autofocus autocomplete="off" spellcheck="false" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Detail Modal -->
+    <div id="project-modal" class="modal-backdrop">
+      <div class="modal-box">
+        <button class="modal-close-btn" id="modal-close-btn">&times;</button>
+        <div class="modal-media" id="modal-media"></div>
+        <div class="modal-content" id="modal-content"></div>
+      </div>
+    </div>
+
+    <!-- Dedicated Fullscreen Carousel Reader Lightbox Modal -->
+    <div id="carousel-reader-modal" class="carousel-reader-modal" aria-hidden="true">
+      <div class="reader-modal-overlay" id="carousel-reader-overlay"></div>
+      
+      <div class="reader-modal-dialog">
+        <!-- Top Control Bar -->
+        <div class="reader-top-bar">
+          <div class="reader-title-info">
+            <span class="reader-kicker-pill">AI EDUCATIONAL SPEC // BRANDBIRD</span>
+            <h3 class="reader-title">Why Can't Your Brain Let It Go?</h3>
+          </div>
+          <div class="reader-top-actions">
+            <div class="reader-counter-pill" id="reader-counter-pill">1 / 4</div>
+            <button class="reader-close-btn" id="carousel-reader-close-btn" aria-label="Close carousel reader" title="Close reader (Esc)">
+              <i data-lucide="x"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Slide Viewport -->
+        <div class="reader-stage">
+          <button class="reader-nav-btn prev" id="reader-btn-prev" aria-label="Previous Slide" title="Previous Slide (←)">
+            <i data-lucide="chevron-left"></i>
+          </button>
+
+          <div class="reader-slide-wrapper" id="reader-slide-wrapper" title="Click slide to advance to next">
+            <img
+              id="reader-active-img"
+              src="assets/images/carousel/brain-slide-1.jpg"
+              alt="Why Can't Your Brain Let It Go? - Slide 1"
+              class="reader-slide-image"
+            />
+            <div class="reader-click-hint">
+              <i data-lucide="arrow-right"></i>
+              <span>Click to advance</span>
+            </div>
+          </div>
+
+          <button class="reader-nav-btn next" id="reader-btn-next" aria-label="Next Slide" title="Next Slide (→)">
+            <i data-lucide="chevron-right"></i>
+          </button>
+        </div>
+
+        <!-- Slide Caption & Cognitive Breakdown -->
+        <div class="reader-caption-block">
+          <h4 class="reader-topic-title" id="reader-topic-title">
+            1. Core Hook: Why Can't Your Brain Let It Go?
+          </h4>
+          <p class="reader-topic-desc" id="reader-topic-desc">
+            The Science of Rumination: Understanding why repetitive loops and awkward memories replay in our consciousness.
+          </p>
+        </div>
+
+        <!-- Thumbnail Navigation Strip -->
+        <div class="reader-thumbs-strip" id="reader-thumbs-strip">
+          <button class="reader-thumb-item active" data-index="0" type="button" title="Slide 1: Hook">
+            <img src="assets/images/carousel/brain-slide-1.jpg" alt="Slide 1 Thumbnail" />
+            <span class="reader-thumb-label">01 // Hook</span>
+          </button>
+          <button class="reader-thumb-item" data-index="1" type="button" title="Slide 2: Survival Architecture">
+            <img src="assets/images/carousel/brain-slide-2.jpg" alt="Slide 2 Thumbnail" />
+            <span class="reader-thumb-label">02 // Survival</span>
+          </button>
+          <button class="reader-thumb-item" data-index="2" type="button" title="Slide 3: Reinforcement Loops">
+            <img src="assets/images/carousel/brain-slide-3.jpg" alt="Slide 3 Thumbnail" />
+            <span class="reader-thumb-label">03 // Memory</span>
+          </button>
+          <button class="reader-thumb-item" data-index="3" type="button" title="Slide 4: Emotional Neutralization">
+            <img src="assets/images/carousel/brain-slide-4.jpg" alt="Slide 4 Thumbnail" />
+            <span class="reader-thumb-label">04 // Power</span>
+          </button>
+        </div>
+
+        <!-- Bottom Keyboard Navigation Hint -->
+        <div class="reader-hotkeys-hint">
+          <span>Navigate with ← / → arrow keys or click anywhere on slide · Esc to close</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <!-- Left -->
+        <div class="footer-brand-block">
+          <div class="footer-brand-title">
+            <span class="brand-status-dot"></span>
+            <span class="brand-name">MOHAN RAAJU</span>
+          </div>
+          <div class="footer-role">AI FELLOW · CREATIVE TECHNOLOGIST</div>
+          <div class="footer-quote">“Curiosity creates.”</div>
+        </div>
+
+        <!-- Center -->
+        <div class="footer-center-block">
+          <div class="footer-slogan">HUMAN CURIOSITY × MACHINE INTELLIGENCE × CREATIVE POSSIBILITY</div>
+          <div class="footer-copy">© 2026 Mohan Raaju. All personal fellowship experiments &amp; creative rights reserved.</div>
+        </div>
+
+        <!-- Right -->
+        <div class="footer-right-block">
+          <a href="#hero" class="back-to-top-btn" id="back-to-top-btn">
+            <span>Back to top</span>
+            <i data-lucide="arrow-up"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Main JS Application Logic -->
+    <script src="app.js"></script>
+    <script>
+      // Initialize Lucide icons
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.lucide) {
+          window.lucide.createIcons();
+        }
+      });
+    </script>
+  </body>
+</html>
