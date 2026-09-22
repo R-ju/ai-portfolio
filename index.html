@@ -40,7 +40,7 @@
         </a>
 
         <!-- Center Nav Links -->
-        <div class="nav-menu-links">
+        <div class="nav-menu-links" id="nav-menu-links">
           <a href="#hero" class="nav-item active">Home</a>
           <a href="#about" class="nav-item">About</a>
           <a href="#fellowship" class="nav-item">Fellowship Journey</a>
@@ -51,13 +51,17 @@
           <a href="#contact" class="nav-item">Contact</a>
         </div>
 
-        <!-- Right Action Button -->
+        <!-- Right Action Button & Mobile Menu Toggle -->
         <div class="nav-action-wrap">
           <a href="#contact" class="connect-pill-btn">
             <i data-lucide="sparkle" class="sparkle-icon"></i>
             <span>Let's Connect</span>
             <i data-lucide="arrow-up-right" class="arrow-icon"></i>
           </a>
+          <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Toggle navigation menu" type="button">
+            <i data-lucide="menu" class="mobile-menu-icon"></i>
+            <i data-lucide="x" class="mobile-close-icon" style="display:none;"></i>
+          </button>
         </div>
       </nav>
     </header>

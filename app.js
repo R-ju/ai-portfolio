@@ -20,8 +20,8 @@
 
   let mouseX = 0, mouseY = 0;
   let targetX = 0, targetY = 0;
-  const windowHalfX = window.innerWidth / 2;
-  const windowHalfY = window.innerHeight / 2;
+  let windowHalfX = window.innerWidth / 2;
+  let windowHalfY = window.innerHeight / 2;
 
   function initThree() {
     if (!canvasContainer || !window.THREE) return;
@@ -36,6 +36,15 @@
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
     canvasContainer.appendChild(renderer.domElement);
+
+    window.addEventListener('resize', () => {
+      windowHalfX = window.innerWidth / 2;
+      windowHalfY = window.innerHeight / 2;
+      if (!camera || !renderer) return;
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
 
     // Particles Setup
     for (let i = 0; i < particleCount; i++) {
@@ -1238,6 +1247,7 @@
       });
 
       modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
       if (window.lucide) window.lucide.createIcons();
     }
 
@@ -1262,6 +1272,7 @@
 
     function closeModal() {
       modal?.classList.remove('open');
+      document.body.style.overflow = '';
       const v = modalMedia?.querySelector('video');
       if (v) v.pause();
       if (modalMedia) modalMedia.innerHTML = '';
@@ -1576,6 +1587,7 @@
     setupHeroStage();
     setupScrollSpyAndRadar();
     setupSkillsAndContact();
+    setupMobileNav();
     if (window.lucide) window.lucide.createIcons();
   });
 
@@ -1629,6 +1641,60 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
     }
+  }
+
+  // =========================================================================
+  // 11. Responsive Mobile Navigation Drawer
+  // =========================================================================
+  function setupMobileNav() {
+    const toggleBtn = document.getElementById('nav-mobile-toggle');
+    const menuLinks = document.getElementById('nav-menu-links');
+    const pillContainer = document.querySelector('.nav-pill-container');
+    if (!toggleBtn || !menuLinks) return;
+
+    const menuIcon = toggleBtn.querySelector('.mobile-menu-icon');
+    const closeIcon = toggleBtn.querySelector('.mobile-close-icon');
+
+    function toggleMenu(e) {
+      if (e) e.stopPropagation();
+      const isOpen = menuLinks.classList.toggle('mobile-open');
+      toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (menuIcon && closeIcon) {
+        menuIcon.style.display = isOpen ? 'none' : 'inline-block';
+        closeIcon.style.display = isOpen ? 'inline-block' : 'none';
+      }
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function closeMenu() {
+      if (menuLinks.classList.contains('mobile-open')) {
+        menuLinks.classList.remove('mobile-open');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        if (menuIcon && closeIcon) {
+          menuIcon.style.display = 'inline-block';
+          closeIcon.style.display = 'none';
+        }
+        if (window.lucide) window.lucide.createIcons();
+      }
+    }
+
+    toggleBtn.addEventListener('click', toggleMenu);
+
+    menuLinks.querySelectorAll('.nav-item').forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (pillContainer && !pillContainer.contains(e.target)) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
   }
 })();
 
