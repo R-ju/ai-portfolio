@@ -54,6 +54,10 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+section[id] {
+  scroll-margin-top: 85px;
+}
+
 body {
   overflow-x: hidden;
   position: relative;
@@ -4934,57 +4938,115 @@ body.modal-locked {
 
 /* ==========================================================================
    MOBILE BREAKPOINT (320px – 767px)
+   Dedicated mobile layout architecture
    ========================================================================== */
 @media (max-width: 767px) {
-  /* Navigation & Mobile Hamburger Drawer */
+  /* 1. Navigation */
   .top-nav-wrapper {
     top: 0.65rem;
     padding: 0 0.75rem;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
   }
 
   .nav-pill-container {
-    padding: 0.45rem 0.85rem;
-    border-radius: 16px;
+    padding: 0.4rem 0.65rem;
+    border-radius: 9999px;
     position: relative;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    width: 100%;
+    background: rgba(5, 12, 26, 0.92);
+    border: 1px solid rgba(93, 230, 255, 0.25);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7), 0 0 20px rgba(93, 230, 255, 0.08);
   }
 
   .nav-brand {
-    gap: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+
+  .brand-status-dot {
+    width: 7px;
+    height: 7px;
   }
 
   .brand-title {
     font-size: 0.78rem;
-    letter-spacing: 0.04em;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    white-space: nowrap;
   }
 
   .brand-role {
-    display: none;
+    display: none !important;
   }
 
-  .connect-pill-btn {
-    display: none;
-  }
-
-  .nav-mobile-toggle {
-    display: flex;
+  /* Right Action Wrap: Let's Connect + Hamburger */
+  .nav-action-wrap {
+    display: flex !important;
     align-items: center;
-    justify-content: center;
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    background: rgba(93, 230, 255, 0.08);
-    border: 1px solid rgba(93, 230, 255, 0.35);
-    color: var(--accent-cyan);
-    cursor: pointer;
-    transition: all 0.2s ease;
-    padding: 0;
+    gap: 0.4rem;
     flex-shrink: 0;
   }
 
-  .nav-mobile-toggle:hover {
-    background: rgba(93, 230, 255, 0.2);
-    transform: scale(1.05);
+  .connect-pill-btn {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.32rem 0.68rem !important;
+    border-radius: 9999px !important;
+    background: rgba(93, 230, 255, 0.08) !important;
+    border: 1px solid var(--accent-cyan) !important;
+    color: var(--accent-cyan) !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    white-space: nowrap !important;
+    min-height: 36px;
+    box-shadow: 0 0 12px rgba(93, 230, 255, 0.18);
+    transition: all 0.2s ease;
+  }
+
+  .connect-pill-btn:active {
+    background: rgba(93, 230, 255, 0.2) !important;
+    color: #ffffff !important;
+  }
+
+  .connect-pill-btn .sparkle-icon,
+  .connect-pill-btn .arrow-icon {
+    width: 11px;
+    height: 11px;
+  }
+
+  .nav-mobile-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    border-radius: 50% !important;
+    background: rgba(93, 230, 255, 0.08) !important;
+    border: 1px solid rgba(93, 230, 255, 0.35) !important;
+    color: var(--accent-cyan) !important;
+    cursor: pointer;
+    padding: 0;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+  }
+
+  .nav-mobile-toggle:active {
+    background: rgba(93, 230, 255, 0.25) !important;
+    transform: scale(0.96);
   }
 
   .nav-mobile-toggle svg {
@@ -4992,27 +5054,28 @@ body.modal-locked {
     height: 18px;
   }
 
+  /* Center Nav Links: Hidden on mobile unless toggled open */
   .nav-menu-links {
-    display: none;
+    display: none !important;
   }
 
   .nav-menu-links.mobile-open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: calc(100% + 8px);
-    left: 0;
-    right: 0;
-    background: rgba(3, 8, 20, 0.97);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-    border: 1px solid rgba(93, 230, 255, 0.3);
-    border-radius: 20px;
-    padding: 1.25rem 0.85rem;
-    gap: 0.35rem;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(93, 230, 255, 0.1);
-    z-index: 1000;
-    animation: mobileMenuIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex !important;
+    flex-direction: column !important;
+    position: absolute !important;
+    top: calc(100% + 8px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(4, 10, 26, 0.98) !important;
+    backdrop-filter: blur(28px) !important;
+    -webkit-backdrop-filter: blur(28px) !important;
+    border: 1px solid rgba(93, 230, 255, 0.32) !important;
+    border-radius: 18px !important;
+    padding: 0.85rem 0.65rem !important;
+    gap: 0.25rem !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95), 0 0 35px rgba(93, 230, 255, 0.12) !important;
+    z-index: 1000 !important;
+    animation: mobileMenuIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   @keyframes mobileMenuIn {
@@ -5027,508 +5090,749 @@ body.modal-locked {
   }
 
   .nav-item {
-    width: 100%;
-    font-size: 0.95rem;
-    font-weight: 600;
-    padding: 0.65rem 0.9rem;
-    border-radius: 12px;
-    color: var(--text-secondary);
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    transition: all 0.15s ease;
+    width: 100% !important;
+    font-size: 0.94rem !important;
+    font-weight: 500 !important;
+    padding: 0.72rem 1rem !important;
+    border-radius: 10px !important;
+    color: var(--text-secondary) !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    text-decoration: none !important;
+    transition: all 0.15s ease !important;
   }
 
-  .nav-item:hover,
+  .nav-item:active,
   .nav-item.active {
-    background: rgba(93, 230, 255, 0.1);
-    color: #ffffff;
+    background: rgba(93, 230, 255, 0.12) !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
   }
 
   .nav-item.active::after {
-    display: none;
+    display: none !important;
   }
 
-  /* Hero Section */
+  /* 2. Hero Section */
   .hero-showcase-section {
-    padding: 4.8rem 0.85rem 2.5rem;
-    min-height: auto;
+    min-height: auto !important;
+    padding: 5.5rem 1rem 2.25rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   .hero-split-grid {
-    grid-template-columns: 1fr;
-    gap: 2.25rem;
-    text-align: center;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.75rem !important;
+    width: 100% !important;
+    text-align: left !important;
   }
 
   .hero-left-column {
-    align-items: center;
-    text-align: center;
+    width: 100% !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    order: 1 !important;
   }
 
   .hero-role-pill {
-    font-size: 0.65rem;
-    padding: 0.32rem 0.8rem;
-    margin-bottom: 1.15rem;
+    font-size: 0.65rem !important;
+    padding: 0.32rem 0.75rem !important;
+    margin-bottom: 0.85rem !important;
+    letter-spacing: 0.08em !important;
   }
 
   .hero-main-title {
-    font-size: clamp(2rem, 8.5vw, 2.75rem);
-    line-height: 1.15;
-    margin-bottom: 1.15rem;
-    letter-spacing: -0.015em;
+    font-size: clamp(1.85rem, 7.8vw, 2.45rem) !important;
+    line-height: 1.12 !important;
+    letter-spacing: -0.015em !important;
+    margin-bottom: 0.85rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    word-break: break-word !important;
   }
 
   .hero-lead-text {
-    font-size: 0.92rem;
-    line-height: 1.6;
-    margin-bottom: 1.75rem;
-    max-width: 100%;
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+    color: var(--text-secondary) !important;
+    margin-bottom: 1.35rem !important;
+    max-width: 100% !important;
   }
 
   .hero-actions-row {
-    flex-direction: column;
-    gap: 0.75rem;
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto 2rem;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 1.35rem 0 !important;
   }
 
   .explore-work-btn,
   .cli-ghost-btn {
-    width: 100%;
-    justify-content: center;
-    min-height: 44px;
-    padding: 0.75rem 1.25rem;
-    font-size: 0.88rem;
+    width: 100% !important;
+    min-height: 48px !important;
+    justify-content: center !important;
+    font-size: 0.9rem !important;
+    border-radius: 9999px !important;
+    padding: 0.75rem 1.25rem !important;
   }
 
   .hero-tags-strip {
-    gap: 0.35rem;
-    font-size: 0.65rem;
-    justify-content: center;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.1em !important;
+    margin-bottom: 0 !important;
+    justify-content: flex-start !important;
   }
 
   .hero-right-column {
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    order: 2 !important;
+    display: flex !important;
+    justify-content: center !important;
   }
 
   .hologram-stage-card {
-    border-radius: 18px;
-    aspect-ratio: 16 / 10;
-    width: 100%;
+    width: 100% !important;
+    aspect-ratio: 16 / 10 !important;
+    border-radius: 18px !important;
+    margin: 0 !important;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.85), 0 0 30px rgba(93, 230, 255, 0.15) !important;
+  }
+
+  .hologram-main-video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
   }
 
   .cube-hotspot {
-    width: 40px;
-    height: 40px;
+    width: 36px !important;
+    height: 36px !important;
   }
 
-  /* About Section */
+  /* 3. Background Three.js Layer */
+  #canvas-container {
+    opacity: 0.75 !important;
+  }
+
+  /* 4. About Section */
   .about-showcase-section {
-    padding: 3.5rem 0.85rem 2.5rem;
-    min-height: auto;
+    min-height: auto !important;
+    padding: 2.75rem 1rem 2.25rem !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   .about-split-grid {
-    grid-template-columns: 1fr;
-    gap: 2.25rem;
-    text-align: center;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    width: 100% !important;
+    text-align: left !important;
   }
 
   .about-left-column {
-    align-items: center;
-    text-align: center;
+    width: 100% !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    order: 1 !important;
   }
 
   .about-eyebrow-pill {
-    font-size: 0.68rem;
-    padding: 0.35rem 1rem;
-    margin-bottom: 1.25rem;
+    font-size: 0.65rem !important;
+    padding: 0.35rem 0.85rem !important;
+    margin-bottom: 1rem !important;
+    letter-spacing: 0.08em !important;
   }
 
   .about-main-title {
-    font-size: clamp(1.85rem, 8vw, 2.6rem);
-    line-height: 1.15;
-    margin-bottom: 1.15rem;
+    font-size: clamp(1.75rem, 7.5vw, 2.35rem) !important;
+    line-height: 1.12 !important;
+    margin-bottom: 1rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    word-break: break-word !important;
+  }
+
+  .about-bio-wrap {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 0.85rem !important;
+    margin-bottom: 1.5rem !important;
+    width: 100% !important;
+  }
+
+  .about-bio-avatar {
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    flex-shrink: 0 !important;
   }
 
   .about-lead-text {
-    font-size: 0.92rem;
-    margin-bottom: 1.75rem;
-    max-width: 100%;
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+    color: var(--text-secondary) !important;
+    margin-bottom: 0 !important;
+    max-width: 100% !important;
   }
 
   .about-features-grid {
-    grid-template-columns: 1fr;
-    gap: 0.85rem;
-    margin-bottom: 2rem;
-    width: 100%;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 0.85rem !important;
+    margin-bottom: 1.5rem !important;
+    width: 100% !important;
   }
 
   .about-feature-card {
-    padding: 1.15rem;
-    border-radius: 14px;
-    text-align: left;
+    padding: 1.15rem !important;
+    border-radius: 14px !important;
+    text-align: left !important;
   }
 
   .methodology-wrapper {
-    align-items: center;
-    text-align: center;
+    width: 100% !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .methodology-steps {
-    justify-content: center;
-    gap: 0.35rem;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+    justify-content: flex-start !important;
   }
 
   .methodology-pill {
-    font-size: 0.68rem;
-    padding: 0.3rem 0.75rem;
+    font-size: 0.68rem !important;
+    padding: 0.3rem 0.75rem !important;
   }
 
   .about-right-column {
-    width: 100%;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    order: 2 !important;
+    display: flex !important;
+    justify-content: center !important;
   }
 
   .radar-schematic-card {
-    padding: 1rem;
-    border-radius: 18px;
-    max-width: 100%;
+    width: 100% !important;
+    max-width: 440px !important;
+    padding: 1.25rem 1rem !important;
+    border-radius: 18px !important;
+    box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 30px rgba(93, 230, 255, 0.12) !important;
   }
 
-  /* Fellowship Timeline */
+  .about-portrait-stage {
+    width: 100% !important;
+    margin: 0.5rem 0 1rem !important;
+  }
+
+  .about-portrait-frame {
+    width: 100% !important;
+    max-width: 380px !important;
+    height: auto !important;
+    aspect-ratio: 4 / 5 !important;
+    max-height: 420px !important;
+    border-radius: 16px !important;
+    margin: 0 auto !important;
+  }
+
+  .about-portrait-photo {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center 15% !important;
+    display: block !important;
+  }
+
+  .radar-visual-stage {
+    width: 100% !important;
+    max-width: 260px !important;
+    margin: 0 auto !important;
+  }
+
+  /* 5. Fellowship Timeline */
   .fellowship-showcase-section {
-    padding: 3.5rem 0.85rem 2.5rem;
+    min-height: auto !important;
+    padding: 2.75rem 1rem 2.25rem !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   .fellowship-main-title {
-    font-size: clamp(1.9rem, 8vw, 2.75rem);
-    line-height: 1.15;
+    font-size: clamp(1.75rem, 7.5vw, 2.35rem) !important;
+    line-height: 1.15 !important;
+    word-break: break-word !important;
   }
 
   .fellowship-gradient-tagline {
-    font-size: clamp(1.3rem, 5.5vw, 1.85rem);
+    font-size: clamp(1.2rem, 5vw, 1.65rem) !important;
   }
 
   .fellowship-lead-desc {
-    font-size: 0.92rem;
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
   }
 
   .timeline-spine {
-    left: 18px;
-    transform: none;
-    top: 15px;
-    bottom: 20px;
+    left: 16px !important;
+    transform: none !important;
+    top: 15px !important;
+    bottom: 20px !important;
   }
 
   .timeline-node-marker {
-    left: 18px;
-    transform: translate(-50%, -50%);
+    left: 16px !important;
+    transform: translate(-50%, -50%) !important;
   }
 
   .timeline-entry {
     justify-content: flex-start !important;
-    padding-left: 42px;
-    margin-bottom: 2.25rem;
-    width: 100%;
+    padding-left: 38px !important;
+    margin-bottom: 1.85rem !important;
+    width: 100% !important;
   }
 
   .timeline-card {
-    width: 100%;
-    padding: 1.35rem 1.15rem;
-    border-radius: 16px;
+    width: 100% !important;
+    padding: 1.25rem 1rem !important;
+    border-radius: 16px !important;
   }
 
   .timeline-card-title {
-    font-size: 1.2rem;
+    font-size: 1.15rem !important;
   }
 
   .timeline-desc {
-    font-size: 0.88rem;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
   }
 
   .check-item-text {
-    font-size: 0.84rem;
+    font-size: 0.82rem !important;
   }
 
   .pillars-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
 
   .pillar-card {
-    padding: 1.35rem 1.15rem;
-    border-radius: 16px;
+    padding: 1.25rem 1rem !important;
+    border-radius: 16px !important;
   }
 
-  /* Works Catalog */
+  /* 6. Works Catalog */
   .works-showcase-section {
-    padding: 3.5rem 0.85rem 2.5rem;
+    min-height: auto !important;
+    padding: 2.75rem 1rem 2.25rem !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  .works-header-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+    margin-bottom: 1.25rem !important;
   }
 
   .works-main-title {
-    font-size: clamp(1.9rem, 8vw, 2.75rem);
+    font-size: clamp(1.75rem, 7.5vw, 2.35rem) !important;
+    word-break: break-word !important;
+  }
+
+  .works-lead-desc {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
   }
 
   .works-filters-bar {
-    gap: 0.45rem;
-    margin-bottom: 2rem;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    padding-bottom: 0.5rem;
-    justify-content: flex-start;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    gap: 0.45rem !important;
+    margin-bottom: 1.5rem !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    padding-bottom: 0.5rem !important;
+    justify-content: flex-start !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
   }
 
   .works-filters-bar::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
 
   .filter-pill-btn {
-    padding: 0.38rem 0.9rem;
-    font-size: 0.7rem;
-    flex-shrink: 0;
-    min-height: 38px;
-    display: inline-flex;
-    align-items: center;
+    padding: 0.38rem 0.85rem !important;
+    font-size: 0.72rem !important;
+    flex-shrink: 0 !important;
+    min-height: 38px !important;
+    display: inline-flex !important;
+    align-items: center !important;
   }
 
   .works-catalog-grid {
-    grid-template-columns: 1fr;
-    gap: 1.4rem;
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+    width: 100% !important;
+  }
+
+  .work-card {
+    width: 100% !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
   }
 
   .work-card-media {
-    height: 200px;
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9 !important;
+    border-radius: 14px 14px 0 0 !important;
+    overflow: hidden !important;
+  }
+
+  .work-card-video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
   }
 
   .work-card-body {
-    padding: 1.25rem;
+    padding: 1.25rem 1rem !important;
   }
 
-  /* Case Studies */
+  .card-title {
+    font-size: 1.2rem !important;
+    margin-bottom: 0.4rem !important;
+  }
+
+  .card-desc {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .card-tools-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+  }
+
+  /* 7. Case Studies / Spotlight */
+  .case-studies-showcase-section,
   .spotlight-section {
-    padding: 3.5rem 0.85rem 2.5rem;
+    min-height: auto !important;
+    padding: 2.75rem 1rem 2.25rem !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
+  .case-studies-header {
+    margin-bottom: 1.75rem !important;
+    text-align: left !important;
+  }
+
+  .case-studies-title,
   .spotlight-main-title {
-    font-size: clamp(1.9rem, 8vw, 2.75rem);
+    font-size: clamp(1.75rem, 7.5vw, 2.35rem) !important;
+    word-break: break-word !important;
+  }
+
+  .case-studies-subtitle {
+    font-size: 0.9rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .case-studies-disclaimer-pill {
+    font-size: 0.65rem !important;
+    padding: 0.3rem 0.75rem !important;
+  }
+
+  .case-studies-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.75rem !important;
+    width: 100% !important;
   }
 
   .case-study-card {
-    padding: 1.25rem 1rem;
-    border-radius: 18px;
-    gap: 1.4rem;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 1.25rem 1rem !important;
+    border-radius: 18px !important;
+    gap: 1.4rem !important;
+    width: 100% !important;
   }
 
-  .study-media-col {
-    order: -1;
+  /* Media always first, content always second */
+  .case-study-card .study-media-col {
+    order: 1 !important;
+    width: 100% !important;
+    margin: 0 !important;
   }
 
-  .study-title {
-    font-size: 1.45rem;
-  }
-
-  .study-field {
-    margin-bottom: 1.1rem;
-  }
-
-  .study-field-text {
-    font-size: 0.88rem;
+  .case-study-card .study-content-col {
+    order: 2 !important;
+    width: 100% !important;
+    padding: 0 !important;
   }
 
   .study-media-wrapper,
   .study-media-video,
   .study-carousel-wrapper {
-    min-height: auto;
-    height: auto;
-    aspect-ratio: 16 / 10;
-    border-radius: 14px;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 10 !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
   }
 
-  /* Interactive Studio / Lab */
+  .study-media-video {
+    object-fit: cover !important;
+    display: block !important;
+  }
+
+  .study-title {
+    font-size: 1.35rem !important;
+    margin-bottom: 0.35rem !important;
+    word-break: break-word !important;
+  }
+
+  .study-field {
+    margin-bottom: 1rem !important;
+  }
+
+  .study-field-label {
+    font-size: 0.72rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .study-field-text {
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+  }
+
+  .study-workflow-box {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.35rem !important;
+  }
+
+  .study-tools-list {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.4rem !important;
+  }
+
+  .study-tool-pill {
+    font-size: 0.75rem !important;
+    padding: 0.35rem 0.65rem !important;
+  }
+
+  /* 8. Studio / Interactive Lab */
   .studio-showcase-section {
-    padding: 3.5rem 0.85rem 2.5rem;
+    min-height: auto !important;
+    padding: 2.75rem 1rem 2.25rem !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   .studio-main-title {
-    font-size: clamp(1.9rem, 8vw, 2.75rem);
+    font-size: clamp(1.75rem, 7.5vw, 2.35rem) !important;
+    word-break: break-word !important;
   }
 
   .lab-tabs {
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    padding-bottom: 0.5rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    justify-content: flex-start !important;
+    padding-bottom: 0.5rem !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+    width: 100% !important;
   }
 
   .lab-tabs::-webkit-scrollbar {
-    display: none;
+    display: none !important;
   }
 
   .lab-tab {
-    flex-shrink: 0;
-    min-height: 40px;
-    font-size: 0.72rem;
-    padding: 0.4rem 0.9rem;
+    flex-shrink: 0 !important;
+    min-height: 40px !important;
+    font-size: 0.72rem !important;
+    padding: 0.4rem 0.9rem !important;
   }
 
   .lab-workspace {
-    padding: 1rem 0.75rem;
-    border-radius: 16px;
+    padding: 1rem 0.75rem !important;
+    border-radius: 16px !important;
   }
 
   .lab-tool.active {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
   }
 
   .api-key-popover {
-    width: calc(100vw - 1.75rem);
-    right: -10px;
-    max-width: 320px;
+    width: calc(100vw - 1.75rem) !important;
+    right: -10px !important;
+    max-width: 320px !important;
   }
 
   .terminal-window {
-    border-radius: 14px;
+    border-radius: 14px !important;
   }
 
   .terminal-body {
-    padding: 0.85rem;
-    font-size: 0.75rem;
-    min-height: 180px;
-    max-height: 260px;
+    padding: 0.85rem !important;
+    font-size: 0.75rem !important;
+    min-height: 180px !important;
+    max-height: 260px !important;
   }
 
-  /* Skills Section */
+  /* 9. Skills & Contact */
   .skills-showcase-section {
-    padding: 3.5rem 0.85rem 2.5rem;
+    min-height: auto !important;
+    padding: 2.75rem 1rem 2.25rem !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   .skills-main-title {
-    font-size: clamp(1.9rem, 8vw, 2.75rem);
+    font-size: clamp(1.75rem, 7.5vw, 2.35rem) !important;
+    word-break: break-word !important;
   }
 
   .skills-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
   }
 
   .skill-card {
-    padding: 1.25rem;
-    border-radius: 16px;
-    min-height: auto;
+    padding: 1.25rem 1rem !important;
+    border-radius: 16px !important;
+    min-height: auto !important;
   }
 
-  .skills-toggle-pill {
-    padding: 0.25rem;
-  }
-
-  .toggle-btn {
-    padding: 0.35rem 0.85rem;
-    font-size: 0.72rem;
-  }
-
-  /* Contact Section */
   .contact-showcase-section {
-    padding: 3.5rem 0.85rem 3.5rem;
+    min-height: auto !important;
+    padding: 2.75rem 1rem 3rem !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
   }
 
   .contact-title {
-    font-size: clamp(1.9rem, 8vw, 2.75rem);
+    font-size: clamp(1.75rem, 7.5vw, 2.35rem) !important;
+    word-break: break-word !important;
   }
 
   .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 1.15rem;
+    grid-template-columns: 1fr !important;
+    gap: 1.15rem !important;
   }
 
   .contact-action-card {
-    padding: 1.4rem 1.15rem;
-    border-radius: 18px;
+    padding: 1.4rem 1.15rem !important;
+    border-radius: 18px !important;
   }
 
   /* Footer */
   .footer-container {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.25rem;
-    align-items: center;
-    padding: 2.5rem 1rem;
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1.25rem !important;
+    align-items: center !important;
+    padding: 2.25rem 1rem !important;
   }
 
   .footer-brand-block,
   .footer-center-block,
   .footer-right-block {
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
   }
 
   .back-to-top-btn {
-    width: fit-content;
-    margin: 0 auto;
-    min-height: 40px;
+    width: fit-content !important;
+    margin: 0 auto !important;
+    min-height: 40px !important;
   }
 
   /* Modals */
   .modal-backdrop {
-    padding: 0.5rem;
+    padding: 0.5rem !important;
   }
 
   .modal-box {
-    width: 100%;
-    max-height: 94vh;
-    border-radius: 16px;
+    width: 100% !important;
+    max-height: 94vh !important;
+    border-radius: 16px !important;
   }
 
   .modal-close-btn {
-    width: 44px;
-    height: 44px;
-    font-size: 1.6rem;
-    top: 0.5rem;
-    right: 0.5rem;
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.6rem !important;
+    top: 0.5rem !important;
+    right: 0.5rem !important;
   }
 
   .modal-content {
-    padding: 1.25rem 0.9rem;
+    padding: 1.25rem 0.9rem !important;
   }
 
   .reader-modal-dialog {
-    padding: 1rem 0.75rem 0.85rem;
-    border-radius: 16px;
-    max-width: 100%;
-    max-height: 95vh;
+    padding: 1rem 0.75rem 0.85rem !important;
+    border-radius: 16px !important;
+    max-width: 100% !important;
+    max-height: 95vh !important;
   }
 
   .reader-stage {
-    gap: 0.4rem;
+    gap: 0.4rem !important;
   }
 
   .reader-nav-btn {
-    width: 36px;
-    height: 36px;
+    width: 36px !important;
+    height: 36px !important;
   }
 
   .reader-slide-wrapper {
-    aspect-ratio: 1 / 1;
-    border-radius: 12px;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 12px !important;
   }
 
   .reader-thumbs-strip {
-    gap: 0.4rem;
+    gap: 0.4rem !important;
   }
 
   .reader-thumb-item {
-    width: 58px;
-    height: 58px;
-    border-radius: 8px;
+    width: 58px !important;
+    height: 58px !important;
+    border-radius: 8px !important;
   }
 }
 
@@ -5536,29 +5840,38 @@ body.modal-locked {
    EXTRA SMALL MOBILE BREAKPOINT (<= 360px)
    ========================================================================== */
 @media (max-width: 360px) {
+  .nav-pill-container {
+    padding: 0.35rem 0.5rem;
+  }
+
   .nav-brand {
-    gap: 0.4rem;
+    gap: 0.35rem;
   }
 
   .brand-title {
     font-size: 0.72rem;
   }
 
+  .connect-pill-btn {
+    padding: 0.28rem 0.5rem !important;
+    font-size: 0.68rem !important;
+  }
+
   .hero-main-title {
-    font-size: 1.85rem;
+    font-size: 1.85rem !important;
   }
 
   .timeline-entry {
-    padding-left: 36px;
+    padding-left: 34px !important;
   }
 
   .timeline-spine,
   .timeline-node-marker {
-    left: 14px;
+    left: 14px !important;
   }
 
   .reader-thumb-item {
-    width: 48px;
-    height: 48px;
+    width: 48px !important;
+    height: 48px !important;
   }
 }

@@ -137,17 +137,33 @@
     outerHalo.rotation.x = Math.PI / 3;
     scene.add(outerHalo);
 
+    update3DViewportScale();
+
     window.addEventListener('resize', onWindowResize, false);
     document.addEventListener('mousemove', onDocumentMouseMove, false);
 
     animate();
   }
 
+  function update3DViewportScale() {
+    if (!coreMesh || !outerHalo) return;
+    const isMobile = window.innerWidth < 768;
+    const scale = isMobile ? 0.58 : 1.0;
+    coreMesh.scale.set(scale, scale, scale);
+    outerHalo.scale.set(scale, scale, scale);
+    const posY = isMobile ? 65 : 40;
+    coreMesh.position.set(0, posY, -100);
+    outerHalo.position.set(0, posY, -100);
+  }
+
   function onWindowResize() {
+    windowHalfX = window.innerWidth / 2;
+    windowHalfY = window.innerHeight / 2;
     if (!camera || !renderer) return;
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
+    update3DViewportScale();
   }
 
   function onDocumentMouseMove(event) {
