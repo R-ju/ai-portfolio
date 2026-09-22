@@ -5055,10 +5055,12 @@ body.modal-locked {
   }
 
   /* Center Nav Links: Hidden on mobile unless toggled open */
+  #nav-menu-links,
   .nav-menu-links {
     display: none !important;
   }
 
+  #nav-menu-links.mobile-open,
   .nav-menu-links.mobile-open {
     display: flex !important;
     flex-direction: column !important;
@@ -5337,22 +5339,27 @@ body.modal-locked {
     max-width: 440px !important;
     padding: 1.25rem 1rem !important;
     border-radius: 18px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
     box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 30px rgba(93, 230, 255, 0.12) !important;
   }
 
   .about-portrait-stage {
     width: 100% !important;
     margin: 0.5rem 0 1rem !important;
+    box-sizing: border-box !important;
   }
 
   .about-portrait-frame {
     width: 100% !important;
-    max-width: 380px !important;
+    max-width: 360px !important;
     height: auto !important;
     aspect-ratio: 4 / 5 !important;
-    max-height: 420px !important;
+    max-height: 400px !important;
     border-radius: 16px !important;
     margin: 0 auto !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
   }
 
   .about-portrait-photo {
@@ -5369,7 +5376,7 @@ body.modal-locked {
     margin: 0 auto !important;
   }
 
-  /* 5. Fellowship Timeline */
+  /* 5. Fellowship Journey Timeline: Single-Column Left-Spine */
   .fellowship-showcase-section {
     min-height: auto !important;
     padding: 2.75rem 1rem 2.25rem !important;
@@ -5392,29 +5399,55 @@ body.modal-locked {
     line-height: 1.55 !important;
   }
 
+  .fellowship-timeline-wrapper {
+    position: relative !important;
+    padding: 1rem 0 !important;
+    width: 100% !important;
+  }
+
   .timeline-spine {
-    left: 16px !important;
+    position: absolute !important;
+    left: 18px !important;
     transform: none !important;
     top: 15px !important;
-    bottom: 20px !important;
+    bottom: 25px !important;
+    width: 2px !important;
   }
 
-  .timeline-node-marker {
-    left: 16px !important;
+  .timeline-node-marker,
+  .timeline-entry .timeline-node-marker {
+    position: absolute !important;
+    left: 18px !important;
+    top: 28px !important;
     transform: translate(-50%, -50%) !important;
+    z-index: 5 !important;
   }
 
-  .timeline-entry {
+  /* Ensure every milestone is strictly single-column left-aligned (no two-sided alternating) */
+  .timeline-entry,
+  .timeline-entry.entry-left,
+  .timeline-entry.entry-right {
+    display: flex !important;
+    flex-direction: column !important;
     justify-content: flex-start !important;
-    padding-left: 38px !important;
-    margin-bottom: 1.85rem !important;
+    align-items: stretch !important;
+    padding-left: 44px !important;
+    padding-right: 0 !important;
+    margin-bottom: 2rem !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  .timeline-card {
+  .timeline-card,
+  .timeline-entry .timeline-card,
+  .timeline-entry.entry-left .timeline-card,
+  .timeline-entry.entry-right .timeline-card {
     width: 100% !important;
-    padding: 1.25rem 1rem !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1.35rem 1.15rem !important;
     border-radius: 16px !important;
+    margin: 0 !important;
   }
 
   .timeline-card-title {
@@ -5430,17 +5463,22 @@ body.modal-locked {
     font-size: 0.82rem !important;
   }
 
+  /* Core Fellowship Pillars: Single Column */
   .pillars-grid {
+    display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 1rem !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
   }
 
   .pillar-card {
-    padding: 1.25rem 1rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 1.35rem 1.15rem !important;
     border-radius: 16px !important;
   }
 
-  /* 6. Works Catalog */
+  /* 6. Selected Work & Experiments: Single Column (One Card per Row) */
   .works-showcase-section {
     min-height: auto !important;
     padding: 2.75rem 1rem 2.25rem !important;
@@ -5493,13 +5531,15 @@ body.modal-locked {
   .works-catalog-grid {
     display: grid !important;
     grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
+    gap: 1.75rem !important;
     width: 100% !important;
   }
 
   .work-card {
     width: 100% !important;
-    border-radius: 16px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    border-radius: 18px !important;
     overflow: hidden !important;
   }
 
@@ -5507,7 +5547,7 @@ body.modal-locked {
     width: 100% !important;
     height: auto !important;
     aspect-ratio: 16 / 9 !important;
-    border-radius: 14px 14px 0 0 !important;
+    border-radius: 16px 16px 0 0 !important;
     overflow: hidden !important;
   }
 
@@ -5519,18 +5559,20 @@ body.modal-locked {
   }
 
   .work-card-body {
-    padding: 1.25rem 1rem !important;
+    padding: 1.35rem 1.15rem !important;
+    box-sizing: border-box !important;
   }
 
   .card-title {
-    font-size: 1.2rem !important;
-    margin-bottom: 0.4rem !important;
+    font-size: 1.25rem !important;
+    margin-bottom: 0.45rem !important;
+    color: #ffffff !important;
   }
 
   .card-desc {
     font-size: 0.88rem !important;
     line-height: 1.55 !important;
-    margin-bottom: 0.85rem !important;
+    margin-bottom: 0.95rem !important;
   }
 
   .card-tools-row {
@@ -5539,7 +5581,7 @@ body.modal-locked {
     gap: 0.35rem !important;
   }
 
-  /* 7. Case Studies / Spotlight */
+  /* 7. Case Studies / Spotlight: Strict Vertical Stack */
   .case-studies-showcase-section,
   .spotlight-section {
     min-height: auto !important;
@@ -5576,26 +5618,37 @@ body.modal-locked {
     width: 100% !important;
   }
 
-  .case-study-card {
+  .case-study-card,
+  .case-study-card.study-grid-normal,
+  .case-study-card.study-grid-reversed {
     display: flex !important;
     flex-direction: column !important;
-    padding: 1.25rem 1rem !important;
+    padding: 1.35rem 1.15rem !important;
     border-radius: 18px !important;
-    gap: 1.4rem !important;
+    gap: 1.5rem !important;
     width: 100% !important;
+    box-sizing: border-box !important;
   }
 
-  /* Media always first, content always second */
-  .case-study-card .study-media-col {
+  /* Media always first (order 1) */
+  .case-study-card .study-media-col,
+  .case-study-card.study-grid-normal .study-media-col,
+  .case-study-card.study-grid-reversed .study-media-col {
     order: 1 !important;
     width: 100% !important;
     margin: 0 !important;
   }
 
-  .case-study-card .study-content-col {
+  /* Content breakdown always second (order 2) */
+  .case-study-card .study-content-col,
+  .case-study-card.study-grid-normal .study-content-col,
+  .case-study-card.study-grid-reversed .study-content-col {
     order: 2 !important;
     width: 100% !important;
     padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
   }
 
   .study-media-wrapper,
@@ -5616,16 +5669,23 @@ body.modal-locked {
 
   .study-title {
     font-size: 1.35rem !important;
-    margin-bottom: 0.35rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 0.25rem !important;
     word-break: break-word !important;
   }
 
+  .study-tag {
+    font-size: 0.78rem !important;
+    margin-bottom: 0.35rem !important;
+  }
+
   .study-field {
-    margin-bottom: 1rem !important;
+    margin-bottom: 0 !important;
   }
 
   .study-field-label {
     font-size: 0.72rem !important;
+    letter-spacing: 0.1em !important;
     margin-bottom: 0.25rem !important;
   }
 
@@ -5861,8 +5921,10 @@ body.modal-locked {
     font-size: 1.85rem !important;
   }
 
-  .timeline-entry {
-    padding-left: 34px !important;
+  .timeline-entry,
+  .timeline-entry.entry-left,
+  .timeline-entry.entry-right {
+    padding-left: 36px !important;
   }
 
   .timeline-spine,
