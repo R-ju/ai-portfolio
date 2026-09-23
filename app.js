@@ -868,7 +868,9 @@
       // Instant pre-buffering on hover/touch before user clicks play
       media.addEventListener('pointerenter', () => {
         if (video.paused && video.readyState < 2) {
-          video.load();
+          if (video.preload === 'none') {
+            video.preload = 'metadata';
+          }
         }
       }, { once: true });
 
@@ -927,6 +929,9 @@
         });
 
         if (video.paused) {
+          if (video.preload === 'none') {
+            video.preload = 'auto';
+          }
           showBuffering();
           video.play().catch((err) => {
             console.log('Video play error:', err);
@@ -960,6 +965,27 @@
     // Initialize case study video players
     setupVideoPlayerElement('study-bar-none-media', 'study-bar-none-video', 'study-bar-none-play-overlay', 'study-bar-none-sound-toggle');
     setupVideoPlayerElement('study-temple-media', 'study-temple-video', 'study-temple-play-overlay', 'study-temple-sound-toggle');
+
+    // Lazy Preloader via IntersectionObserver:
+    // Only pre-warm video metadata when the card scrolls within 250px of the viewport,
+    // ensuring initial page load does not download below-the-fold videos.
+    if ('IntersectionObserver' in window) {
+      const videoCardObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const vid = entry.target.querySelector('video');
+            if (vid && vid.preload === 'none') {
+              vid.preload = 'metadata';
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '250px 0px' });
+
+      document.querySelectorAll('.work-card-media, .study-media-wrapper').forEach((el) => {
+        videoCardObserver.observe(el);
+      });
+    }
 
     // Click handler for Women Struggles image card
     const womenMedia = document.getElementById('women-struggles-card-media');
@@ -1437,6 +1463,26 @@
   function setupHeroStage() {
     const card = document.getElementById('hologram-stage-card');
     if (!card) return;
+
+    // Ensure hero video autoplays reliably across all mobile and desktop browsers
+    const heroVideo = card.querySelector('.hologram-main-video');
+    if (heroVideo) {
+      heroVideo.muted = true;
+      const playPromise = heroVideo.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          const startPlayback = () => {
+            heroVideo.play().catch(() => {});
+            window.removeEventListener('scroll', startPlayback);
+            window.removeEventListener('touchstart', startPlayback);
+            window.removeEventListener('click', startPlayback);
+          };
+          window.addEventListener('scroll', startPlayback, { passive: true, once: true });
+          window.addEventListener('touchstart', startPlayback, { passive: true, once: true });
+          window.addEventListener('click', startPlayback, { passive: true, once: true });
+        });
+      }
+    }
 
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
