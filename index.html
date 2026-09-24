@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23050D1C' stroke='%235DE6FF' stroke-width='2'/><circle cx='16' cy='16' r='6' fill='%235DE6FF'/><circle cx='16' cy='16' r='2' fill='%23FFFFFF'/></svg>" />
-    <link rel="stylesheet" href="styles.css?v=2.3.0" />
+    <link rel="stylesheet" href="styles.css?v=2.4.0" />
     <!-- External Libraries: Three.js, Lucide Icons, Canvas-Confetti -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
@@ -131,7 +131,6 @@
                   poster="assets/images/hero-hand-cubes.jpg"
                 >
                   <source src="assets/video/robot-hand-hologram.mp4" type="video/mp4" />
-                  <source src="Robot_hand_rotating_holographic_…_20260912170620.mp4" type="video/mp4" />
                   <!-- Fallback Image if video is not supported -->
                   <img
                     src="assets/images/hero-hand-cubes.jpg"
@@ -624,7 +623,6 @@
                 loop
               >
                 <source src="assets/video/bar-none.mp4" type="video/mp4" />
-                <source src="Bar None.mp4" type="video/mp4" />
               </video>
               <div class="work-play-overlay" id="bar-none-work-play-overlay" title="Play Video">
                 <div class="work-play-circle">
@@ -667,7 +665,6 @@
                 loop
               >
                 <source src="assets/video/karuppasamy-temple.mp4" type="video/mp4" />
-                <source src="Karuppasamy Temple.mp4" type="video/mp4" />
               </video>
               <div class="work-play-overlay" id="temple-work-play-overlay" title="Play Video">
                 <div class="work-play-circle">
@@ -712,16 +709,16 @@
               <!-- Carousel Slides Track -->
               <div class="work-carousel-container" id="brain-carousel-track">
                 <div class="carousel-slide active" data-index="0">
-                  <img src="assets/images/carousel/brain-slide-1.jpg" alt="Why Can't Your Brain Let It Go? - Slide 1" class="carousel-img" />
+                  <img src="assets/images/carousel/brain-slide-1.jpg" alt="Why Can't Your Brain Let It Go? - Slide 1" class="carousel-img" loading="lazy" decoding="async" />
                 </div>
                 <div class="carousel-slide" data-index="1">
-                  <img src="assets/images/carousel/brain-slide-2.jpg" alt="Your Brain is Built to Remember the Cringe - Slide 2" class="carousel-img" />
+                  <img src="assets/images/carousel/brain-slide-2.jpg" alt="Your Brain is Built to Remember the Cringe - Slide 2" class="carousel-img" loading="lazy" decoding="async" />
                 </div>
                 <div class="carousel-slide" data-index="2">
-                  <img src="assets/images/carousel/brain-slide-3.jpg" alt="The More You Replay It, The Stronger The Memory - Slide 3" class="carousel-img" />
+                  <img src="assets/images/carousel/brain-slide-3.jpg" alt="The More You Replay It, The Stronger The Memory - Slide 3" class="carousel-img" loading="lazy" decoding="async" />
                 </div>
                 <div class="carousel-slide" data-index="3">
-                  <img src="assets/images/carousel/brain-slide-4.jpg" alt="You Can't Erase The Memory, But You Can Change Its Power - Slide 4" class="carousel-img" />
+                  <img src="assets/images/carousel/brain-slide-4.jpg" alt="You Can't Erase The Memory, But You Can Change Its Power - Slide 4" class="carousel-img" loading="lazy" decoding="async" />
                 </div>
               </div>
 
@@ -775,7 +772,6 @@
                 loop
               >
                 <source src="assets/video/campa-energy.mp4" type="video/mp4" />
-                <source src="Campa.mp4" type="video/mp4" />
               </video>
               <div class="work-play-overlay" id="campa-work-play-overlay" title="Play Video">
                 <div class="work-play-circle">
@@ -819,7 +815,6 @@
                 loop
               >
                 <source src="assets/video/wild-stone.mp4" type="video/mp4" />
-                <source src="Wild Stone.mp4" type="video/mp4" />
               </video>
               <div class="work-play-overlay" id="wild-stone-work-play-overlay" title="Play Video">
                 <div class="work-play-circle">
@@ -862,7 +857,6 @@
                 loop
               >
                 <source src="assets/video/ibaco.mp4" type="video/mp4" />
-                <source src="Ibaco.mp4" type="video/mp4" />
               </video>
               <div class="work-play-overlay" id="ibaco-work-play-overlay" title="Play Video">
                 <div class="work-play-circle">
@@ -905,7 +899,6 @@
                 loop
               >
                 <source src="assets/video/life-on-mars.mp4" type="video/mp4" />
-                <source src="Mars.mp4" type="video/mp4" />
               </video>
               <div class="work-play-overlay" id="mars-work-play-overlay" title="Play Video">
                 <div class="work-play-circle">
@@ -943,6 +936,8 @@
                 src="assets/images/women-struggles.jpg"
                 alt="Women Struggles - AI Visual Storytelling"
                 class="work-card-img"
+                loading="lazy"
+                decoding="async"
                 style="width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block;transition:transform 0.4s ease;"
               />
               <div class="work-play-overlay" style="background:rgba(3,8,20,0.15);opacity:0;transition:opacity 0.3s ease;">
@@ -1006,7 +1001,6 @@
                   loop
                 >
                   <source src="assets/video/bar-none.mp4" type="video/mp4" />
-                  <source src="Bar None.mp4" type="video/mp4" />
                 </video>
                 <div class="study-media-overlay" id="study-bar-none-play-overlay" title="Play Commercial">
                   <div class="study-play-circle">
@@ -1174,7 +1168,6 @@
                   loop
                 >
                   <source src="assets/video/karuppasamy-temple.mp4" type="video/mp4" />
-                  <source src="Karuppasamy Temple.mp4" type="video/mp4" />
                 </video>
                 <div class="study-media-overlay" id="study-temple-play-overlay" title="Play Documentary Spec">
                   <div class="study-play-circle">
@@ -1205,16 +1198,16 @@
                 <!-- Carousel Slides Track -->
                 <div class="study-carousel-container" id="study-brain-carousel-track">
                   <div class="study-carousel-slide active" data-index="0">
-                    <img src="assets/images/carousel/brain-slide-1.jpg" alt="Why Can't Your Brain Let It Go? - Slide 1" class="study-carousel-img" />
+                    <img src="assets/images/carousel/brain-slide-1.jpg" alt="Why Can't Your Brain Let It Go? - Slide 1" class="study-carousel-img" loading="lazy" decoding="async" />
                   </div>
                   <div class="study-carousel-slide" data-index="1">
-                    <img src="assets/images/carousel/brain-slide-2.jpg" alt="Your Brain is Built to Remember the Cringe - Slide 2" class="study-carousel-img" />
+                    <img src="assets/images/carousel/brain-slide-2.jpg" alt="Your Brain is Built to Remember the Cringe - Slide 2" class="study-carousel-img" loading="lazy" decoding="async" />
                   </div>
                   <div class="study-carousel-slide" data-index="2">
-                    <img src="assets/images/carousel/brain-slide-3.jpg" alt="The More You Replay It, The Stronger The Memory - Slide 3" class="study-carousel-img" />
+                    <img src="assets/images/carousel/brain-slide-3.jpg" alt="The More You Replay It, The Stronger The Memory - Slide 3" class="study-carousel-img" loading="lazy" decoding="async" />
                   </div>
                   <div class="study-carousel-slide" data-index="3">
-                    <img src="assets/images/carousel/brain-slide-4.jpg" alt="You Can't Erase The Memory, But You Can Change Its Power - Slide 4" class="study-carousel-img" />
+                    <img src="assets/images/carousel/brain-slide-4.jpg" alt="You Can't Erase The Memory, But You Can Change Its Power - Slide 4" class="study-carousel-img" loading="lazy" decoding="async" />
                   </div>
                 </div>
 
@@ -1995,19 +1988,19 @@
         <!-- Thumbnail Navigation Strip -->
         <div class="reader-thumbs-strip" id="reader-thumbs-strip">
           <button class="reader-thumb-item active" data-index="0" type="button" title="Slide 1: Hook">
-            <img src="assets/images/carousel/brain-slide-1.jpg" alt="Slide 1 Thumbnail" />
+            <img src="assets/images/carousel/brain-slide-1.jpg" alt="Slide 1 Thumbnail" loading="lazy" />
             <span class="reader-thumb-label">01 // Hook</span>
           </button>
           <button class="reader-thumb-item" data-index="1" type="button" title="Slide 2: Survival Architecture">
-            <img src="assets/images/carousel/brain-slide-2.jpg" alt="Slide 2 Thumbnail" />
+            <img src="assets/images/carousel/brain-slide-2.jpg" alt="Slide 2 Thumbnail" loading="lazy" />
             <span class="reader-thumb-label">02 // Survival</span>
           </button>
           <button class="reader-thumb-item" data-index="2" type="button" title="Slide 3: Reinforcement Loops">
-            <img src="assets/images/carousel/brain-slide-3.jpg" alt="Slide 3 Thumbnail" />
+            <img src="assets/images/carousel/brain-slide-3.jpg" alt="Slide 3 Thumbnail" loading="lazy" />
             <span class="reader-thumb-label">03 // Memory</span>
           </button>
           <button class="reader-thumb-item" data-index="3" type="button" title="Slide 4: Emotional Neutralization">
-            <img src="assets/images/carousel/brain-slide-4.jpg" alt="Slide 4 Thumbnail" />
+            <img src="assets/images/carousel/brain-slide-4.jpg" alt="Slide 4 Thumbnail" loading="lazy" />
             <span class="reader-thumb-label">04 // Power</span>
           </button>
         </div>
@@ -2049,7 +2042,7 @@
     </footer>
 
     <!-- Main JS Application Logic -->
-    <script src="app.js?v=2.3.0"></script>
+    <script src="app.js?v=2.4.0"></script>
     <script>
       // Initialize Lucide icons
       document.addEventListener('DOMContentLoaded', () => {

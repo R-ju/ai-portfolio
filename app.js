@@ -757,7 +757,7 @@
       title: 'CAMPA ENERGY',
       category: 'Commercial Video Spec',
       tags: ['Midjourney', 'Google Flow', 'Gemini', 'Suno'],
-      media: '<div style="position:relative;width:100%;background:#020713;border-radius:12px;overflow:hidden;"><video controls autoplay playsinline poster="assets/images/campa-energy.png" style="width:100%;max-height:440px;display:block;border-radius:12px;"><source src="assets/video/campa-energy.mp4" type="video/mp4" /><source src="Campa.mp4" type="video/mp4" /></video></div>',
+      media: '<div style="position:relative;width:100%;background:#020713;border-radius:12px;overflow:hidden;"><video controls autoplay playsinline poster="assets/images/campa-energy.png" style="width:100%;max-height:440px;display:block;border-radius:12px;"><source src="assets/video/campa-energy.mp4" type="video/mp4" /></video></div>',
       desc: 'A vibrant personal creative spec film showcasing kinetic typography, surging electric citrus liquid flows, and hyper-caffeinated energy aesthetics.',
       metrics: [
         { label: 'Soundtrack', val: 'Suno AI Sonic Score' },
@@ -771,7 +771,7 @@
       title: 'WILD STONE',
       category: 'Commercial Video Spec',
       tags: ['Midjourney', 'Google Flow', 'Canva'],
-      media: '<div style="position:relative;width:100%;background:#020713;border-radius:12px;overflow:hidden;"><video controls autoplay playsinline poster="assets/images/wild-stone.png" style="width:100%;max-height:440px;display:block;border-radius:12px;"><source src="assets/video/wild-stone.mp4" type="video/mp4" /><source src="Wild Stone.mp4" type="video/mp4" /></video></div>',
+      media: '<div style="position:relative;width:100%;background:#020713;border-radius:12px;overflow:hidden;"><video controls autoplay playsinline poster="assets/images/wild-stone.png" style="width:100%;max-height:440px;display:block;border-radius:12px;"><source src="assets/video/wild-stone.mp4" type="video/mp4" /></video></div>',
       desc: 'An atmospheric personal spec piece capturing primal elemental textures, volcanic obsidian rock, and mist-shrouded fragrance notes.',
       metrics: [
         { label: 'Texture Study', val: 'Obsidian & Volcanic Basalt' },
@@ -785,7 +785,7 @@
       title: 'IBACO',
       category: 'Commercial Video Spec',
       tags: ['Midjourney', 'Google Flow', 'Canva'],
-      media: '<div style="position:relative;width:100%;background:#020713;border-radius:12px;overflow:hidden;"><video controls autoplay playsinline poster="assets/images/ibaco.png" style="width:100%;max-height:440px;display:block;border-radius:12px;"><source src="assets/video/ibaco.mp4" type="video/mp4" /><source src="Ibaco.mp4" type="video/mp4" /></video></div>',
+      media: '<div style="position:relative;width:100%;background:#020713;border-radius:12px;overflow:hidden;"><video controls autoplay playsinline poster="assets/images/ibaco.png" style="width:100%;max-height:440px;display:block;border-radius:12px;"><source src="assets/video/ibaco.mp4" type="video/mp4" /></video></div>',
       desc: 'A sensory personal spec project exploring fluid chocolate viscosity, velvety scoops, and decadent confectionery diffusion.',
       metrics: [
         { label: 'Physics Focus', val: 'Chocolate Viscosity & Melting Point' },
@@ -799,7 +799,7 @@
       title: 'LIFE ON MARS',
       category: 'AI Education Film',
       tags: ['Midjourney', 'Google Flow', 'Claude', 'Suno'],
-      media: '<div style="position:relative;width:100%;background:#020713;border-radius:12px;overflow:hidden;"><video controls autoplay playsinline poster="assets/images/life-on-mars.png" style="width:100%;max-height:440px;display:block;border-radius:12px;"><source src="assets/video/life-on-mars.mp4" type="video/mp4" /><source src="Mars.mp4" type="video/mp4" /></video></div>',
+      media: '<div style="position:relative;width:100%;background:#020713;border-radius:12px;overflow:hidden;"><video controls autoplay playsinline poster="assets/images/life-on-mars.png" style="width:100%;max-height:440px;display:block;border-radius:12px;"><source src="assets/video/life-on-mars.mp4" type="video/mp4" /></video></div>',
       desc: "A speculative science visual essay examining terraforming, sub-surface ice caverns, and humanity's multi-planetary future.",
       metrics: [
         { label: 'Setting', val: 'Valles Marineris, Mars' },
@@ -865,14 +865,24 @@
 
       if (!media || !video) return;
 
-      // Instant pre-buffering on hover/touch before user clicks play
+      // Smart pre-warming on intentional hover / focus:
+      // Debounced by 120ms so cursor movement across cards doesn't flood requests.
+      let hoverWarmTimer = null;
       media.addEventListener('pointerenter', () => {
-        if (video.paused && video.readyState < 2) {
-          if (video.preload === 'none') {
-            video.preload = 'metadata';
-          }
+        if (video.paused && video.readyState < 2 && video.preload === 'none') {
+          hoverWarmTimer = setTimeout(() => {
+            if (video.paused && video.preload === 'none') {
+              video.preload = 'metadata';
+            }
+          }, 120);
         }
-      }, { once: true });
+      });
+      media.addEventListener('pointerleave', () => {
+        if (hoverWarmTimer) {
+          clearTimeout(hoverWarmTimer);
+          hoverWarmTimer = null;
+        }
+      });
 
       function updatePlayIcon(iconName) {
         const circle = overlay?.querySelector('.work-play-circle, .study-play-circle');
@@ -881,6 +891,8 @@
           if (window.lucide) window.lucide.createIcons();
         }
       }
+
+      let bufferDelayTimer = null;
 
       function showBuffering() {
         overlay?.classList.add('buffering');
@@ -891,11 +903,23 @@
       }
 
       function hideBuffering() {
+        if (bufferDelayTimer) {
+          clearTimeout(bufferDelayTimer);
+          bufferDelayTimer = null;
+        }
         overlay?.classList.remove('buffering');
       }
 
+      // Only show buffering indicator if playback is genuinely stalled for >250ms
       video.addEventListener('waiting', () => {
-        showBuffering();
+        if (video.paused) return;
+        if (!bufferDelayTimer) {
+          bufferDelayTimer = setTimeout(() => {
+            if (!video.paused && video.readyState < 3) {
+              showBuffering();
+            }
+          }, 250);
+        }
       });
 
       video.addEventListener('playing', () => {
@@ -921,6 +945,11 @@
         if (e.target.closest('.video-sound-pill')) return;
         e.stopPropagation();
 
+        if (hoverWarmTimer) {
+          clearTimeout(hoverWarmTimer);
+          hoverWarmTimer = null;
+        }
+
         // Pause other active videos across the site
         document.querySelectorAll('.work-card-video, .study-media-video').forEach((v) => {
           if (v !== video && !v.paused) {
@@ -929,16 +958,18 @@
         });
 
         if (video.paused) {
-          if (video.preload === 'none') {
+          if (video.preload !== 'auto') {
             video.preload = 'auto';
           }
-          showBuffering();
-          video.play().catch((err) => {
-            console.log('Video play error:', err);
-            hideBuffering();
-            overlay?.classList.remove('playing');
-            updatePlayIcon('play');
-          });
+          const playPromise = video.play();
+          if (playPromise !== undefined) {
+            playPromise.catch((err) => {
+              console.log('Video play error:', err);
+              hideBuffering();
+              overlay?.classList.remove('playing');
+              updatePlayIcon('play');
+            });
+          }
         } else {
           video.pause();
         }
@@ -967,9 +998,12 @@
     setupVideoPlayerElement('study-temple-media', 'study-temple-video', 'study-temple-play-overlay', 'study-temple-sound-toggle');
 
     // Lazy Preloader via IntersectionObserver:
-    // Only pre-warm video metadata when the card scrolls within 250px of the viewport,
-    // ensuring initial page load does not download below-the-fold videos.
-    if ('IntersectionObserver' in window) {
+    // On mobile devices (< 768px), cards are stacked in a single vertical column,
+    // so observing single cards on scroll pre-warms metadata without network congestion.
+    // On desktop (>= 768px), cards sit in a 3-column grid, so batch scroll-preloading
+    // triggers 6 concurrent range requests that choke CDN bandwidth.
+    // On desktop, pre-warming is performed intentionally on hover (120ms debounce) or click.
+    if ('IntersectionObserver' in window && window.innerWidth < 768) {
       const videoCardObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
@@ -980,7 +1014,7 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { rootMargin: '250px 0px' });
+      }, { rootMargin: '200px 0px' });
 
       document.querySelectorAll('.work-card-media, .study-media-wrapper').forEach((el) => {
         videoCardObserver.observe(el);
