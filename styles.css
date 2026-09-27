@@ -913,6 +913,16 @@ main {
   }
 }
 
+/* Hero section modifier for IndiaFutureAI badge */
+.hero-ifa-badge {
+  margin: 0 0 1.6rem 0;
+  width: fit-content;
+}
+
+.hero-left-column .hero-role-pill {
+  margin-bottom: 0.75rem;
+}
+
 .radar-identity-sub {
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -4833,6 +4843,10 @@ body.modal-locked {
     text-align: center;
   }
 
+  .hero-ifa-badge {
+    margin: 0 auto 1.4rem auto;
+  }
+
   .hero-lead-text {
     max-width: 620px;
     margin-left: auto;
@@ -5205,8 +5219,19 @@ body.modal-locked {
   .hero-role-pill {
     font-size: 0.65rem !important;
     padding: 0.32rem 0.75rem !important;
-    margin-bottom: 0.85rem !important;
+    margin-bottom: 0.45rem !important;
     letter-spacing: 0.08em !important;
+  }
+
+  .hero-ifa-badge {
+    margin: 0 0 0.85rem 0 !important;
+    font-size: clamp(0.56rem, 2.7vw, 0.64rem) !important;
+    padding: 0.28rem 0.65rem !important;
+    white-space: nowrap !important;
+  }
+
+  .hero-ifa-badge .ifa-badge-text {
+    white-space: nowrap !important;
   }
 
   .hero-main-title {
@@ -5979,6 +6004,17 @@ body.modal-locked {
 
   .hero-main-title {
     font-size: 1.85rem !important;
+  }
+
+  .hero-ifa-badge {
+    font-size: 0.54rem !important;
+    padding: 0.22rem 0.45rem !important;
+    gap: 0.32rem !important;
+  }
+
+  .hero-ifa-badge .ifa-badge-logo {
+    width: 14px !important;
+    height: 14px !important;
   }
 
   .timeline-entry,
