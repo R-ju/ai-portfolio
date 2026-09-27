@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23050D1C' stroke='%235DE6FF' stroke-width='2'/><circle cx='16' cy='16' r='6' fill='%235DE6FF'/><circle cx='16' cy='16' r='2' fill='%23FFFFFF'/></svg>" />
-    <link rel="stylesheet" href="styles.css?v=2.4.0" />
+    <link rel="stylesheet" href="styles.css?v=2.5.0" />
     <!-- External Libraries: Three.js, Lucide Icons, Canvas-Confetti -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
@@ -123,6 +123,7 @@
               <div class="hologram-art-wrap">
                 <video
                   class="hologram-main-video"
+                  src="assets/video/robot-hand-hologram.mp4"
                   autoplay
                   loop
                   muted
@@ -138,6 +139,16 @@
                     class="hologram-main-img"
                   />
                 </video>
+                <script>
+                  (function(){
+                    var hv = document.querySelector('.hologram-main-video');
+                    if (hv) {
+                      hv.muted = true;
+                      var p = hv.play();
+                      if (p !== undefined) p.catch(function(){});
+                    }
+                  })();
+                </script>
 
                 <!-- Interactive Floating Hotspots for the 5 Cubes -->
                 <div class="cube-hotspot hotspot-perfume" data-title="WILD STONE" data-sub="Men's Luxury Fragrance AI Commercial">
@@ -616,8 +627,9 @@
               <video
                 id="bar-none-work-video"
                 class="work-card-video"
+                src="assets/video/bar-none.mp4"
                 poster="assets/video/bar-none-poster.png"
-                preload="none"
+                preload="metadata"
                 playsinline
                 muted
                 loop
@@ -658,6 +670,7 @@
               <video
                 id="temple-work-video"
                 class="work-card-video"
+                src="assets/video/karuppasamy-temple.mp4"
                 poster="assets/images/karuppasamy-temple.png"
                 preload="none"
                 playsinline
@@ -765,6 +778,7 @@
               <video
                 id="campa-work-video"
                 class="work-card-video"
+                src="assets/video/campa-energy.mp4"
                 poster="assets/images/campa-energy.png"
                 preload="none"
                 playsinline
@@ -808,6 +822,7 @@
               <video
                 id="wild-stone-work-video"
                 class="work-card-video"
+                src="assets/video/wild-stone.mp4"
                 poster="assets/images/wild-stone.png"
                 preload="none"
                 playsinline
@@ -850,6 +865,7 @@
               <video
                 id="ibaco-work-video"
                 class="work-card-video"
+                src="assets/video/ibaco.mp4"
                 poster="assets/images/ibaco.png"
                 preload="none"
                 playsinline
@@ -892,6 +908,7 @@
               <video
                 id="mars-work-video"
                 class="work-card-video"
+                src="assets/video/life-on-mars.mp4"
                 poster="assets/images/life-on-mars.png"
                 preload="none"
                 playsinline
@@ -994,6 +1011,7 @@
                 <video
                   id="study-bar-none-video"
                   class="study-media-video"
+                  src="assets/video/bar-none.mp4"
                   poster="assets/video/bar-none-poster.png"
                   preload="none"
                   playsinline
@@ -1161,6 +1179,7 @@
                 <video
                   id="study-temple-video"
                   class="study-media-video"
+                  src="assets/video/karuppasamy-temple.mp4"
                   poster="assets/images/karuppasamy-temple.png"
                   preload="none"
                   playsinline
@@ -2042,7 +2061,7 @@
     </footer>
 
     <!-- Main JS Application Logic -->
-    <script src="app.js?v=2.4.0"></script>
+    <script src="app.js?v=2.5.0"></script>
     <script>
       // Initialize Lucide icons
       document.addEventListener('DOMContentLoaded', () => {

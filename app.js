@@ -865,22 +865,10 @@
 
       if (!media || !video) return;
 
-      // Smart pre-warming on intentional hover / focus:
-      // Debounced by 120ms so cursor movement across cards doesn't flood requests.
-      let hoverWarmTimer = null;
+      // Pre-warm on pointer enter so user interaction is instantaneous
       media.addEventListener('pointerenter', () => {
-        if (video.paused && video.readyState < 2 && video.preload === 'none') {
-          hoverWarmTimer = setTimeout(() => {
-            if (video.paused && video.preload === 'none') {
-              video.preload = 'metadata';
-            }
-          }, 120);
-        }
-      });
-      media.addEventListener('pointerleave', () => {
-        if (hoverWarmTimer) {
-          clearTimeout(hoverWarmTimer);
-          hoverWarmTimer = null;
+        if (video.paused && video.preload !== 'auto') {
+          video.preload = 'auto';
         }
       });
 
@@ -924,6 +912,7 @@
 
       video.addEventListener('playing', () => {
         hideBuffering();
+        media.classList.add('is-playing');
         overlay?.classList.add('playing');
         sound?.classList.add('show');
         updatePlayIcon('pause');
@@ -931,12 +920,14 @@
 
       video.addEventListener('pause', () => {
         hideBuffering();
+        media.classList.remove('is-playing');
         overlay?.classList.remove('playing');
         updatePlayIcon('play');
       });
 
       video.addEventListener('ended', () => {
         hideBuffering();
+        media.classList.remove('is-playing');
         overlay?.classList.remove('playing');
         updatePlayIcon('play');
       });
@@ -944,11 +935,6 @@
       function toggleVideo(e) {
         if (e.target.closest('.video-sound-pill')) return;
         e.stopPropagation();
-
-        if (hoverWarmTimer) {
-          clearTimeout(hoverWarmTimer);
-          hoverWarmTimer = null;
-        }
 
         // Pause other active videos across the site
         document.querySelectorAll('.work-card-video, .study-media-video').forEach((v) => {
@@ -961,11 +947,14 @@
           if (video.preload !== 'auto') {
             video.preload = 'auto';
           }
+          media.classList.add('is-playing');
+          overlay?.classList.add('playing');
           const playPromise = video.play();
           if (playPromise !== undefined) {
             playPromise.catch((err) => {
               console.log('Video play error:', err);
               hideBuffering();
+              media.classList.remove('is-playing');
               overlay?.classList.remove('playing');
               updatePlayIcon('play');
             });
@@ -997,12 +986,42 @@
     setupVideoPlayerElement('study-bar-none-media', 'study-bar-none-video', 'study-bar-none-play-overlay', 'study-bar-none-sound-toggle');
     setupVideoPlayerElement('study-temple-media', 'study-temple-video', 'study-temple-play-overlay', 'study-temple-sound-toggle');
 
-    // Lazy Preloader via IntersectionObserver:
-    // On mobile devices (< 768px), cards are stacked in a single vertical column,
-    // so observing single cards on scroll pre-warms metadata without network congestion.
-    // On desktop (>= 768px), cards sit in a 3-column grid, so batch scroll-preloading
-    // triggers 6 concurrent range requests that choke CDN bandwidth.
-    // On desktop, pre-warming is performed intentionally on hover (120ms debounce) or click.
+    // High-Priority Pre-warming for the FIRST visible Work video (Bar None)
+    // Fetches only the tiny 33KB moov metadata header ahead of time so the first video starts instantly.
+    const firstWorkVideo = document.getElementById('bar-none-work-video');
+    if (firstWorkVideo) {
+      firstWorkVideo.preload = 'metadata';
+      setTimeout(() => {
+        if (firstWorkVideo.paused && firstWorkVideo.readyState === 0) {
+          firstWorkVideo.load();
+        }
+      }, 300);
+    }
+
+    // Sequential Idle Pre-warmer: After initial page load finishes, sequentially fetch
+    // video metadata one card at a time with 400ms delays so moov atoms are cached without flooding network.
+    const warmIdleVideos = () => {
+      const allVideos = Array.from(document.querySelectorAll('.work-card-video, .study-media-video'));
+      let idx = 0;
+      function warmNext() {
+        if (idx >= allVideos.length) return;
+        const v = allVideos[idx++];
+        if (v && v !== firstWorkVideo && v.paused && v.readyState === 0) {
+          v.preload = 'metadata';
+          v.load();
+        }
+        setTimeout(warmNext, 400);
+      }
+      setTimeout(warmNext, 600);
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => setTimeout(warmIdleVideos, 1200));
+    } else {
+      setTimeout(warmIdleVideos, 1500);
+    }
+
+    // Lazy Preloader via IntersectionObserver for mobile
     if ('IntersectionObserver' in window && window.innerWidth < 768) {
       const videoCardObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {

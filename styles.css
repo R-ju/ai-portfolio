@@ -1819,15 +1819,11 @@ section {
   border-radius: 18px;
 }
 
-.study-media-overlay.playing {
-  opacity: 0;
-  pointer-events: none;
-}
-
+.study-media-overlay.playing,
 .study-media-wrapper:hover .study-media-overlay.playing {
-  opacity: 0.9;
-  pointer-events: auto;
-  background: rgba(2, 6, 16, 0.45);
+  opacity: 0 !important;
+  pointer-events: none !important;
+  background: transparent !important;
 }
 
 /* Study Carousel */
@@ -2869,12 +2865,14 @@ section {
   background: rgba(3, 8, 20, 0.35);
   cursor: pointer;
   z-index: 4;
-  transition: opacity 0.3s ease, background 0.3s ease;
+  transition: opacity 0.18s ease, background 0.18s ease;
 }
 
-.work-play-overlay.playing {
-  opacity: 0;
-  pointer-events: none;
+.work-play-overlay.playing,
+.work-card-media:hover .work-play-overlay.playing {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  background: transparent !important;
 }
 
 .work-play-overlay.buffering,
@@ -2898,10 +2896,11 @@ section {
   to { transform: rotate(360deg); }
 }
 
-.work-card-media:hover .work-play-overlay.playing {
-  opacity: 0.9;
-  pointer-events: auto;
-  background: rgba(3, 8, 20, 0.45);
+.work-card-media.is-playing video,
+.study-media-wrapper.is-playing video,
+.work-card:hover .work-card-media.is-playing video,
+.case-study-card:hover .study-media-wrapper.is-playing video {
+  transform: none !important;
 }
 
 .work-play-circle {
