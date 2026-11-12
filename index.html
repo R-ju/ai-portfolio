@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23050D1C' stroke='%235DE6FF' stroke-width='2'/><circle cx='16' cy='16' r='6' fill='%235DE6FF'/><circle cx='16' cy='16' r='2' fill='%23FFFFFF'/></svg>" />
-    <link rel="stylesheet" href="styles.css?v=2.6.1" />
+    <link rel="stylesheet" href="styles.css?v=2.7.0" />
     <!-- External Libraries: Three.js, Lucide Icons, Canvas-Confetti -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
@@ -47,7 +47,6 @@
           <a href="#works" class="nav-item">Work</a>
           <a href="#spotlight" class="nav-item">Case Studies</a>
           <a href="#skills" class="nav-item">Skills</a>
-          <a href="#studio" class="nav-item">Studio</a>
           <a href="#contact" class="nav-item">Contact</a>
         </div>
 
@@ -1673,186 +1672,6 @@
         </div>
       </section>
 
-      <!-- Interactive Generative Studio Section (Gemini Multimodal Lab) -->
-      <section id="studio" class="lab-section">
-        <div class="section-header">
-          <div class="section-eyebrow">
-            <i data-lucide="sparkles"></i>
-            <span>GEMINI MULTIMODAL LAB</span>
-          </div>
-          <h2 class="section-heading">Interactive Generative Studio</h2>
-          <p class="section-lead">
-            Experience Mohan Raaju's generative AI workflow. Generate cinematic commercial storyboards, enhance raw prompts, or converse with Mohan's AI Fellow Persona.
-          </p>
-        </div>
-
-        <div class="lab-container">
-          <!-- Lab Control Toolbar -->
-          <div class="lab-toolbar">
-            <div class="lab-modes">
-              <button class="lab-mode-btn active" data-mode="storyboard">
-                <i data-lucide="clapperboard"></i>
-                <span>Commercial Storyboard</span>
-              </button>
-              <button class="lab-mode-btn" data-mode="alchemist">
-                <i data-lucide="wand-2"></i>
-                <span>Prompt Alchemist</span>
-              </button>
-              <button class="lab-mode-btn" data-mode="persona">
-                <i data-lucide="message-square"></i>
-                <span>AI Fellow Persona</span>
-              </button>
-            </div>
-
-            <!-- Optional Live Gemini API Key Input -->
-            <div class="api-key-wrap">
-              <button id="api-key-toggle-btn" class="api-key-btn">
-                <i data-lucide="key"></i>
-                <span id="api-key-status-text">Using Demo Mode (Instant)</span>
-              </button>
-              <div class="api-key-popover" id="api-key-popover">
-                <p class="popover-title">Connect Gemini API Key (Optional)</p>
-                <p class="popover-sub">Run live queries with Gemini 2.5 Flash / Pro. Your key remains local in your browser session.</p>
-                <div class="popover-input-row">
-                  <input type="password" id="gemini-api-key-input" placeholder="AIzaSy..." />
-                  <button id="save-api-key-btn" class="btn btn-sm">Save</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Studio Workspace -->
-          <div class="lab-workspace">
-            <!-- Mode 1: Commercial Storyboard Generator -->
-            <div class="lab-tool active" id="tool-storyboard">
-              <div class="tool-sidebar">
-                <h3>Commercial Director</h3>
-                <p>Generate a 4-shot cinematic commercial treatment with camera directions, lighting schemes, and Veo prompts.</p>
-
-                <div class="input-group">
-                  <label for="sb-product">Product / Brand Name</label>
-                  <input type="text" id="sb-product" value="BAR NONE" placeholder="e.g. BAR NONE, Lumina Fragrance, Aura AI..." />
-                </div>
-
-                <div class="input-group">
-                  <label for="sb-category">Category</label>
-                  <select id="sb-category">
-                    <option value="protein-food" selected>Artisanal Nutrition &amp; Snack</option>
-                    <option value="luxury-perfume">Luxury Fragrance &amp; Cosmetics</option>
-                    <option value="futuristic-tech">Spatial Computing &amp; Wearables</option>
-                    <option value="electric-auto">Autonomous Electric Vehicle</option>
-                    <option value="fashion-apparel">Avant-Garde High Fashion</option>
-                  </select>
-                </div>
-
-                <div class="input-group">
-                  <label for="sb-mood">Aesthetic Mood</label>
-                  <select id="sb-mood">
-                    <option value="moody-macro" selected>Dark Moody Obsidian &amp; Macro (Current)</option>
-                    <option value="cyber-neon">Cyberpunk Prismatic Neon</option>
-                    <option value="ethereal-minimal">Ethereal Scandinavian Minimal</option>
-                    <option value="cinematic-dramatic">Warm Golden Hour 35mm Film</option>
-                  </select>
-                </div>
-
-                <button id="generate-storyboard-btn" class="btn btn-primary full-width">
-                  <i data-lucide="sparkles"></i>
-                  <span>Generate Storyboard</span>
-                </button>
-              </div>
-
-              <div class="tool-output-area">
-                <div class="output-header">
-                  <span class="output-label"><i data-lucide="film"></i> Generated Storyboard Treatment</span>
-                  <div class="output-actions">
-                    <button class="icon-btn" id="copy-storyboard-btn" title="Copy Text"><i data-lucide="copy"></i></button>
-                    <button class="icon-btn" id="regenerate-sb-btn" title="Randomize"><i data-lucide="refresh-cw"></i></button>
-                  </div>
-                </div>
-
-                <div class="storyboard-grid" id="storyboard-output">
-                  <!-- Storyboard cards dynamically populated -->
-                </div>
-              </div>
-            </div>
-
-            <!-- Mode 2: Prompt Alchemist -->
-            <div class="lab-tool" id="tool-alchemist">
-              <div class="tool-sidebar">
-                <h3>Prompt Alchemist</h3>
-                <p>Transform brief ideas into production-grade multi-parameter prompts optimized for Veo and Imagen 3.</p>
-
-                <div class="input-group">
-                  <label for="raw-prompt-input">Raw Concept</label>
-                  <textarea id="raw-prompt-input" rows="4" placeholder="e.g. A chocolate bar breaking in slow motion with nuts falling on a dark stone table"></textarea>
-                </div>
-
-                <div class="input-group">
-                  <label>Aspect Ratio</label>
-                  <div class="chip-group" id="aspect-ratio-chips">
-                    <button class="chip active" data-val="16:9">16:9 Cinema</button>
-                    <button class="chip" data-val="9:16">9:16 Reel</button>
-                    <button class="chip" data-val="1:1">1:1 Square</button>
-                  </div>
-                </div>
-
-                <div class="input-group">
-                  <label>Camera Rig Simulation</label>
-                  <select id="camera-rig-select">
-                    <option value="arri-macro">ARRI Alexa 65 + 100mm Macro Anamorphic</option>
-                    <option value="high-speed">Phantom Flex 4K (1000 FPS Super Slow-Mo)</option>
-                    <option value="fpv-drone">FPV Micro Drone Sweep</option>
-                  </select>
-                </div>
-
-                <button id="alchemize-btn" class="btn btn-primary full-width">
-                  <i data-lucide="wand-2"></i>
-                  <span>Alchemize Prompt</span>
-                </button>
-              </div>
-
-              <div class="tool-output-area">
-                <div class="output-header">
-                  <span class="output-label"><i data-lucide="terminal"></i> Synthesized Production Prompt</span>
-                  <button class="copy-code-btn" id="copy-alchemist-btn"><i data-lucide="copy"></i> <span>Copy</span></button>
-                </div>
-                <div class="alchemist-output-box" id="alchemist-output">
-                  <div class="empty-state">
-                    <i data-lucide="wand-sparkles"></i>
-                    <p>Click "Alchemize Prompt" to synthesize full technical parameters, lighting schemes, and motion vectors.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Mode 3: AI Fellow Persona Chat -->
-            <div class="lab-tool" id="tool-persona">
-              <div class="chat-container">
-                <div class="chat-messages" id="chat-messages">
-                  <div class="chat-message assistant">
-                    <div class="chat-avatar">MR</div>
-                    <div class="chat-bubble">
-                      <p>Hello! I am Mohan Raaju's digital twin. I explore generative AI pipelines, visual storytelling with Google Veo &amp; Gemini, 3D WebGL, and creative technology. Ask me about how the BAR NONE commercial was generated, my creative philosophy, or prompt architecture!</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="chat-suggestions">
-                  <button class="suggestion-chip">How did you create the BAR NONE commercial?</button>
-                  <button class="suggestion-chip">What is your generative AI tech stack?</button>
-                  <button class="suggestion-chip">How do you maintain temporal coherence in Veo?</button>
-                </div>
-
-                <div class="chat-input-bar">
-                  <input type="text" id="chat-input" placeholder="Ask Mohan Raaju's AI Fellow Persona..." />
-                  <button id="chat-send-btn" class="btn btn-primary"><i data-lucide="send"></i></button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- Collaboration & Contact Section -->
       <section id="contact" class="contact-showcase-section">
         <div class="contact-header">
@@ -2097,7 +1916,7 @@
     </footer>
 
     <!-- Main JS Application Logic -->
-    <script src="app.js?v=2.6.0"></script>
+    <script src="app.js?v=2.7.0"></script>
     <script>
       // Initialize Lucide icons
       document.addEventListener('DOMContentLoaded', () => {

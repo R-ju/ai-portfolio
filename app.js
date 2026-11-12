@@ -433,6 +433,8 @@
   }
 
   function setupCreativeLab() {
+    if (!document.getElementById('tool-storyboard')) return;
+
     // Mode switcher
     const modeBtns = document.querySelectorAll('.lab-mode-btn');
     const tools = {
